@@ -14,12 +14,10 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 dotenv.config();
-console.log(process.env.client_id)
-console.log("sdasdsa")
 
-var client_id = 'CLIENT_ID'; // Your client id
-var client_secret = 'CLIENT_SECRET'; // Your secret
-var redirect_uri = 'REDIRECT_URI'; // Your redirect uri
+var client_id = process.env.client_id; // Your client id
+var client_secret = process.env.client_secret; // Your secret
+var redirect_uri = process.env.redirect_uri; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
