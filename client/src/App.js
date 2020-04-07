@@ -25,18 +25,25 @@ window.location.hash = "";
 
 function App() {
   const [token,setToken] = useState(hash.access_token)
-  console.log("token")
-  console.log(token)
+  $.ajax({
+    url: 'https://api.spotify.com/v1/me',
+    headers: {
+        'Authorization': 'Bearer ' + token
+    },
+    success: function(response) {
+        console.log(response)
+    }
+  })
 
   return (
     <div className="App">
       <header className="App-header">
-        <a
+        {token ? "" : <a
             className="btn btn--loginApp-link"
             href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}
           >
             Login to Spotify
-        </a>
+        </a>}
       </header>
     </div>
   );
