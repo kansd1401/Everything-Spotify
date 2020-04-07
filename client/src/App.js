@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import * as $ from 'jquery';
 import './App.css';
 
@@ -10,7 +10,24 @@ const scopes = [
   "user-read-playback-state",
 ];
 
+// Get the hash of the url
+const hash = window.location.hash
+  .substring(1)
+  .split("&")
+  .reduce(function(initial, item) {
+    if (item) {
+      var parts = item.split("=");
+      initial[parts[0]] = decodeURIComponent(parts[1]);
+    }
+    return initial;
+  }, {});
+window.location.hash = "";
+
 function App() {
+  const [token,setToken] = useState(hash.access_token)
+  console.log("token")
+  console.log(token)
+
   return (
     <div className="App">
       <header className="App-header">
