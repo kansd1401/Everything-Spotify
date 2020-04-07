@@ -8,6 +8,7 @@ const redirectUri = "http://localhost:3000";
 const scopes = [
   "user-read-currently-playing",
   "user-read-playback-state",
+  "user-top-read"
 ];
 
 // Get the hash of the url
@@ -25,15 +26,25 @@ window.location.hash = "";
 
 function App() {
   const [token,setToken] = useState(hash.access_token)
+  // $.ajax({
+  //   url: 'https://api.spotify.com/v1/me',
+  //   headers: {
+  //       'Authorization': 'Bearer ' + token
+  //   },
+  //   success: function(response) {
+  //       console.log(response)
+  //   }
+  // })
   $.ajax({
-    url: 'https://api.spotify.com/v1/me',
-    headers: {
-        'Authorization': 'Bearer ' + token
+    url: "https://api.spotify.com/v1/me/top/artists",
+    type: "GET",
+    beforeSend: (xhr) => {
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
     },
-    success: function(response) {
-        console.log(response)
+    success: (data) => {
+      console.log(data)
     }
-  })
+  });
 
   return (
     <div className="App">
