@@ -26,25 +26,6 @@ window.location.hash = "";
 
 function App() {
   const [token,setToken] = useState(hash.access_token)
-  // $.ajax({
-  //   url: 'https://api.spotify.com/v1/me',
-  //   headers: {
-  //       'Authorization': 'Bearer ' + token
-  //   },
-  //   success: function(response) {
-  //       console.log(response)
-  //   }
-  // })
-  $.ajax({
-    url: "https://api.spotify.com/v1/me/top/artists",
-    type: "GET",
-    beforeSend: (xhr) => {
-      xhr.setRequestHeader("Authorization", "Bearer " + token);
-    },
-    success: (data) => {
-      console.log(data)
-    }
-  });
 
   return (
     <div className="App">
