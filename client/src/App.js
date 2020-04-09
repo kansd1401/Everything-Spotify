@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import * as $ from 'jquery';
 import './App.css';
+import TopList from './components/TopList'
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "8beaa14c429347dc96de7ca4c2434e11";
@@ -30,7 +31,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {token ? "" : <a
+        {token ? <TopList token={token}/> : <a
             className="btn btn--loginApp-link"
             href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}
           >

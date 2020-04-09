@@ -6,13 +6,13 @@ const TRACKS = "tracks"
 const GENRE = "genre"
 
 
-export default function BarberList(props) {
+export default function TopList(props) {
   const [selected, setSelected] = useState(ARTISTS)
   const [data, setData] = useState("")
 
   const getData = () => {
     $.ajax({
-      url: "https://api.spotify.com/v1/me/top/artists",
+      url: "https://api.spotify.com/v1/me/top/tracks",
       type: "GET",
       beforeSend: (xhr) => {
         xhr.setRequestHeader("Authorization", "Bearer " + props.token);
