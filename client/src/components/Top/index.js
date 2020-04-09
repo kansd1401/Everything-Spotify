@@ -1,12 +1,13 @@
 import React,{useState, useEffect} from 'react';
 import * as $ from 'jquery';
+import Track from './Track'
 
 const ARTISTS = "artists"
 const TRACKS = "tracks"
 const GENRE = "genre"
 
 
-export default function TopList(props) {
+export default function Top(props) {
   const [selected, setSelected] = useState(ARTISTS)
   const [data, setData] = useState("")
 
@@ -17,8 +18,9 @@ export default function TopList(props) {
       beforeSend: (xhr) => {
         xhr.setRequestHeader("Authorization", "Bearer " + props.token);
       },
-      success: (data) => {
-        console.log(data)
+      success: (res) => {
+        console.log(res.items)
+        setData(res.items)
       }
     });
   }
@@ -30,6 +32,9 @@ export default function TopList(props) {
 
   return (
       <section className="top">
+        <div>
+          {data ? <Track />:""}
+        </div>
         
       </section>
   );

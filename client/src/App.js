@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import * as $ from 'jquery';
 import './App.css';
-import TopList from './components/TopList'
+import TopList from './components/Top'
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "8beaa14c429347dc96de7ca4c2434e11";
