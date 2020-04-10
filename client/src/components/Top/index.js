@@ -1,7 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import * as $ from 'jquery';
 import TrackList from './TrackList'
-import Time from './Time'
 import "./index.scss"
 
 const ARTISTS = "artists"
@@ -35,9 +34,9 @@ export default function Top(props) {
 
   return (
       <section className="top">
-        <ul>
+        <ul className="age-list">
           {age.map(x => {
-            return <Time name={x}/>})}
+            return <li className="age-list__item">{x}</li>})}
         </ul>
         <div>
           {data !== "" ? <TrackList tracks={data}/>:""}
