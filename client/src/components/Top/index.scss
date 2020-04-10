@@ -1,3 +1,7 @@
+$grey: #dddddd;
+$white: #fff;
+
+
 
 .list{
   display: flex;
@@ -27,13 +31,15 @@
   &__info--explicit {
     background: rgba(182, 21, 64, 0.4);
   }
-  &__artist {
+  &__artists {
     font-size: 1rem;
+    color: $grey
   }
   &__name {
     font-weight: 700;
+    font-size: 1.4rem;
   }
-  &__album{
-    font-size: 1rem;
+  &__rank {
+    vertical-align: middle;
   }
 }

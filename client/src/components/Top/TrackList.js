@@ -7,9 +7,9 @@ export default function TrackList(props) {
      {props.tracks.map((track, index) => {
       return <Track
         key={index+1}
-        cover={track.album.images[1].url}
+        rank={index+1}
+        cover={track.album.images[2].url}
         artists={track.artists}
-        album={track.album.name}
         name={track.name}
         explicit={track.explicit}
        />
