@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import * as $ from 'jquery';
 import TrackList from './TrackList'
+import "./index.scss"
 
 const ARTISTS = "artists"
 const TRACKS = "tracks"
