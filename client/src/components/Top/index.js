@@ -19,6 +19,10 @@ export default function Top(props) {
     $.ajax({
       url: "https://api.spotify.com/v1/me/top/tracks",
       type: "GET",
+      data: { 
+        limit: 50, 
+        time_range: "long_term" 
+      },
       beforeSend: (xhr) => {
         xhr.setRequestHeader("Authorization", "Bearer " + props.token);
       },
