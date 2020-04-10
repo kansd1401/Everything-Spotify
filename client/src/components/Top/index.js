@@ -1,11 +1,13 @@
 import React,{useState, useEffect} from 'react';
 import * as $ from 'jquery';
 import TrackList from './TrackList'
+import Time from './Time'
 import "./index.scss"
 
 const ARTISTS = "artists"
 const TRACKS = "tracks"
 const GENRE = "genre"
+const age = ["Last Month", "Last 6 Months", "All Time"]
 
 
 export default function Top(props) {
@@ -33,6 +35,10 @@ export default function Top(props) {
 
   return (
       <section className="top">
+        <ul>
+          {age.map(x => {
+            return <Time name={x}/>})}
+        </ul>
         <div>
           {data !== "" ? <TrackList tracks={data}/>:""}
         </div>
