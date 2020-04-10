@@ -7,12 +7,11 @@ import "./index.scss"
 const ARTISTS = "artists"
 const TRACKS = "tracks"
 const GENRE = "genre"
-const ages = ["Last Month", "Last 6 Months", "All Time"]
-
+const ages = [{name: "Last Month", time_range: "short_term"},{name: "Last 6 Months", time_range: "medium_term"},{name: "All Time", time_range: "long_term"}]
 
 export default function Top(props) {
   const [selected, setSelected] = useState(TRACKS)
-  const [age, setAge] = useState(ages[0])
+  const [age, setAge] = useState(ages[0].name)
   const [data, setData] = useState("")
 
   const getData = () => {
@@ -21,7 +20,7 @@ export default function Top(props) {
       type: "GET",
       data: { 
         limit: 50, 
-        time_range: "long_term" 
+        time_range: ages.find(x => x.name===age).time_range
       },
       beforeSend: (xhr) => {
         xhr.setRequestHeader("Authorization", "Bearer " + props.token);
@@ -42,7 +41,7 @@ export default function Top(props) {
       <section className="top">
         <td className="age-list">
           {ages.map(x => {
-            return <AgeListItem name={x} selected={age} setAge={setAge}/>})}
+            return <AgeListItem name={x.name} selected={age} setAge={setAge}/>})}
         </td>
         <div>
           {data !== "" ? <TrackList tracks={data}/>:""}
