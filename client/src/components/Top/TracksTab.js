@@ -34,8 +34,8 @@ export default function TracksTab(props) {
   return (
       <section className="top">
         <td className="age-list">
-          {ages.map(x => {
-            return <ListItem name={x.name} selected={age} setAge={setAge}/>})}
+          {ages.map((x,index) => {
+            return <ListItem key={index} name={x.name} selected={age} setAge={setAge}/>})}
         </td>
         <div>
           {data !== "" ? <TrackList tracks={data}/>:""}

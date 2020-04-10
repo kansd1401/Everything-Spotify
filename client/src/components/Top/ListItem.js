@@ -8,8 +8,8 @@ export default function ListItem(props) {
   });
 
   return (
-    <th onClick={() => props.setAge(props.name)} className={classes}>
+    <div onClick={() => props.setAge(props.name)} className={classes}>
       <h3 className="text--regular">{props.name}</h3> 
-    </th>
+    </div>
   );
 }

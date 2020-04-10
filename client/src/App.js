@@ -1,5 +1,4 @@
-import React,{useState} from 'react';
-import * as $ from 'jquery';
+import React from 'react';
 import './App.css';
 import TopList from './components/Top'
 
@@ -26,7 +25,7 @@ const hash = window.location.hash
 window.location.hash = "";
 
 function App() {
-  const [token,setToken] = useState(hash.access_token)
+  const token = hash.access_token
 
   return (
     <div className="App">

@@ -10,10 +10,10 @@ export default function Top(props) {
 
   return (
       <section className="top">
-        <td className="age-list">
-          {tabs.map(x => {
-            return <ListItem name={x} selected={selected} setAge={setSelected}/>})}
-        </td>
+        <div className="age-list">
+          {tabs.map((x,index) => {
+            return <ListItem key={index} name={x} selected={selected} setAge={setSelected}/>})}
+        </div>
         {selected==="Top Tracks" && <TracksTab token={props.token}/>}
       </section>
   );
