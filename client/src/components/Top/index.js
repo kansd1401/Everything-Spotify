@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import * as $ from 'jquery';
-import Track from './Track'
+import TrackList from './TrackList'
 
 const ARTISTS = "artists"
 const TRACKS = "tracks"
@@ -33,7 +33,7 @@ export default function Top(props) {
   return (
       <section className="top">
         <div>
-          {data ? <Track />:""}
+          {data !== "" ? <TrackList tracks={data}/>:""}
         </div>
         
       </section>
