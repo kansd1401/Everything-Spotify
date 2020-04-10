@@ -1,16 +1,18 @@
 import React,{useState, useEffect} from 'react';
 import * as $ from 'jquery';
 import TrackList from './TrackList'
+import AgeListItem from './AgeListItem'
 import "./index.scss"
 
 const ARTISTS = "artists"
 const TRACKS = "tracks"
 const GENRE = "genre"
-const age = ["Last Month", "Last 6 Months", "All Time"]
+const ages = ["Last Month", "Last 6 Months", "All Time"]
 
 
 export default function Top(props) {
-  const [selected, setSelected] = useState(ARTISTS)
+  const [selected, setSelected] = useState(TRACKS)
+  const [age, setAge] = useState(ages[0])
   const [data, setData] = useState("")
 
   const getData = () => {
@@ -29,15 +31,15 @@ export default function Top(props) {
 
   useEffect(() => {
     getData()
-  }, [selected])
+  }, [selected,age])
   
 
   return (
       <section className="top">
-        <ul className="age-list">
-          {age.map(x => {
-            return <li className="age-list__item">{x}</li>})}
-        </ul>
+        <td className="age-list">
+          {ages.map(x => {
+            return <AgeListItem name={x} selected={age} setAge={setAge}/>})}
+        </td>
         <div>
           {data !== "" ? <TrackList tracks={data}/>:""}
         </div>
