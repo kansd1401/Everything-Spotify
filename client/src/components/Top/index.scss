@@ -1,8 +1,11 @@
+
 .list{
   display: flex;
   flex-direction: column;
 }
+
 .track {
+  max-height: 5%;
   display: flex;
   color: #fefefe;
   margin-bottom: 0.5rem;
@@ -25,12 +28,12 @@
     background: rgba(182, 21, 64, 0.4);
   }
   &__artist {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   &__name {
     font-weight: 700;
   }
   &__album{
-    
+    font-size: 1rem;
   }
 }
