@@ -6,7 +6,7 @@ import "./index.scss"
 const tabs = ["Top Tracks","Top Artists","Genre Statistics"]
 
 export default function Top(props) {
-  const [selected, setSelected] = useState(tabs[0].name)
+  const [selected, setSelected] = useState(tabs[0])
 
   return (
       <section className="top">
