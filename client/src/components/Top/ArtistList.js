@@ -3,7 +3,7 @@ import Artist from './Artist'
 
 export default function ArtistList(props) {
   return (
-    <div className="list">
+    <div className="artist-list">
      {props.artists.map((artist, index) => {
       return <Artist
         key={index+1}

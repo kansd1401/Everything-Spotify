@@ -9,6 +9,13 @@ $blue: #9b1e1e;
   flex-direction: column;
 }
 
+.artist-list{
+  display: flex;
+  margin: 10%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .track {
   max-height: 5%;
   display: flex;
@@ -48,21 +55,22 @@ $blue: #9b1e1e;
 .artist {
   max-height: 5%;
   display: flex;
+  flex-direction: column;
   color: #fefefe;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem;
   &__thumbnail {
     border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
   }
   &__info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    padding-left: 1rem;
-    border-top-right-radius: 0.5rem;
+    // padding-left: 1rem;
+    border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
-    background: #201f2f;
+    background: #1505ee;
     overflow: hidden;
   }
   &__info--explicit {
