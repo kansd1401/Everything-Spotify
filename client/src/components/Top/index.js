@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import TracksTab from './TracksTab'
 import ListItem from './ListItem'
+import ArtistsTab from './ArtistsTab'
 import "./index.scss"
 
 const tabs = ["Top Tracks","Top Artists","Genre Statistics"]
@@ -15,6 +16,7 @@ export default function Top(props) {
             return <ListItem key={index} name={x} selected={selected} setAge={setSelected}/>})}
         </div>
         {selected==="Top Tracks" && <TracksTab token={props.token}/>}
+        {selected==="Top Artists" && <ArtistsTab token={props.token}/>}
       </section>
   );
 }
