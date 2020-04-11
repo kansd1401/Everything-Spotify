@@ -45,6 +45,42 @@ $blue: #9b1e1e;
   }
 }
 
+.artist {
+  max-height: 5%;
+  display: flex;
+  color: #fefefe;
+  margin-bottom: 0.5rem;
+  &__thumbnail {
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding-left: 1rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    background: #201f2f;
+    overflow: hidden;
+  }
+  &__info--explicit {
+    background: rgba(182, 21, 64, 0.4);
+  }
+  &__artists {
+    font-size: 1rem;
+    color: $grey
+  }
+  &__name {
+    font-weight: 700;
+    font-size: 1.4rem;
+  }
+  &__rank {
+    vertical-align: middle;
+  }
+}
+
 .age-list {
   display: flex;
   width: 100%;

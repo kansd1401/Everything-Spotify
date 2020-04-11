@@ -8,10 +8,13 @@ export default function Artist(props) {
 
   return (
     <article className="artist">
-      <img className="artist__thumbnail" src={props.artworkUrl100} alt="Artist" />
+      <div className="artist__rank">
+        {props.rank}
+      </div>
+      <img className="artist__thumbnail" src={props.cover} alt="Artist" />
       <div className={artistInfoClass}>
-        <div className="artist__name">{props.collectionName}</div>
-        <div className="artist__artist">{props.artistName}</div>
+        <div className="artist__name">{props.name}</div>
+        <div className="artist__artist">{props.popularity}</div>
       </div>
     </article>
   );

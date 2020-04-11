@@ -39,7 +39,7 @@ export default function ArtistsTab(props) {
             return <ListItem key={index} name={x.name} selected={age} setAge={setAge}/>})}
         </div>
         <div>
-          {/* {data !== "" ? <TrackList tracks={data}/>:""} */}
+          {data !== "" ? <ArtistList artists={data}/>:""}
         </div>
       </section>
   );
