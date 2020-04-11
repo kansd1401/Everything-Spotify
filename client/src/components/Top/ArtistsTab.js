@@ -14,26 +14,14 @@ export default function ArtistsTab(props) {
       url: `https://api.spotify.com/v1/me/top/artists`,
       type: "GET",
       data: { 
-        limit: 10, 
+        limit: 20, 
         time_range: ages.find(x => x.name===age).time_range
       },
       beforeSend: (xhr) => {
         xhr.setRequestHeader("Authorization", "Bearer " + props.token);
       },
       success: (res) => {
-        for(let i =0; i < res.items.length; i++){
-          $.ajax({
-            url: res.items[i].href,
-            type: "GET",
-            beforeSend: (xhr) => {
-              xhr.setRequestHeader("Authorization", "Bearer " + props.token);
-            },
-            success: (response) => {
-              console.log(response)
-              res.items[i] = {...response}
-            }
-          });
-        }
+        console.log(res.items)
         setData(res.items)
       }
     });
