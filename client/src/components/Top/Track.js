@@ -9,11 +9,11 @@ export default function Track(props) {
 
   return (
     <article className="track">
-      <div className="track__rank">
-        {props.rank}
-      </div>
       <img className="track__thumbnail" src={props.cover} alt="Track" />
       <div className={trackInfoClass}>
+        <div className="track__rank">
+          {props.rank}
+        </div>
         <div className="track__name">{props.name}</div>
         <div className="track__artists">{artists}</div>
       </div>

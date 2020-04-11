@@ -21,7 +21,19 @@ export default function ArtistsTab(props) {
         xhr.setRequestHeader("Authorization", "Bearer " + props.token);
       },
       success: (res) => {
-        console.log(res.items)
+        for(let i =0; i < res.items.length; i++){
+          $.ajax({
+            url: res.items[i].href,
+            type: "GET",
+            beforeSend: (xhr) => {
+              xhr.setRequestHeader("Authorization", "Bearer " + props.token);
+            },
+            success: (response) => {
+              console.log(response)
+              res.items[i] = {...response}
+            }
+          });
+        }
         setData(res.items)
       }
     });
