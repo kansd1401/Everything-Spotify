@@ -8,7 +8,8 @@ const redirectUri = "http://localhost:3000";
 const scopes = [
   "user-read-currently-playing",
   "user-read-playback-state",
-  "user-top-read"
+  "user-top-read",
+  "user-library-read"
 ];
 
 // Get the hash of the url
