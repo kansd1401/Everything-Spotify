@@ -3,30 +3,51 @@ import * as $ from 'jquery';
 
 const ages = [{name: "Last Month", time_range: "short_term"},{name: "Last 6 Months", time_range: "medium_term"},{name: "All Time", time_range: "long_term"}]
 
+const getData = (token) => {
+  let dataSet = [];
+  $.ajax({
+    url: `https://api.spotify.com/v1/me/tracks`,
+    type: "GET",
+    data: { 
+      limit: 50
+    },
+    beforeSend: (xhr) => {
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
+    success: (res) => {
+      dataSet = [...res.items]
+      console.log(dataSet)
+      while (res.next){
+        $.ajax({
+          url: res.next,
+          type: "GET",
+          async: false,
+          data: { 
+            limit: 50
+          },
+          beforeSend: (xhr) => {
+            xhr.setRequestHeader("Authorization", "Bearer " + token);
+          },
+          success: (response) => {
+            console.log(response)
+            dataSet = [...dataSet,...response.items]
+            res.next = response.next
+          }
+        });
+      }
+      return res.items
+    }
+  });
+}
+
 export default function SavedTab(props) {
   const [age, setAge] = useState(ages[0].name)
   const [data, setData] = useState("")
 
-  const getData = () => {
-    $.ajax({
-      url: `https://api.spotify.com/v1/me/tracks`,
-      type: "GET",
-      data: { 
-        limit: 50, 
-        time_range: ages.find(x => x.name===age).time_range
-      },
-      beforeSend: (xhr) => {
-        xhr.setRequestHeader("Authorization", "Bearer " + props.token);
-      },
-      success: (res) => {
-        console.log(res.items)
-        setData(res.items)
-      }
-    });
-  }
+  
 
   useEffect(() => {
-    getData()
+    setData(getData(props.token))
   }, [age])
   
 
