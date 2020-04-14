@@ -16,7 +16,6 @@ const getData = (token) => {
     },
     success: (res) => {
       dataSet = [...res.items]
-      console.log(dataSet)
       while (res.next){
         $.ajax({
           url: res.next,
@@ -29,13 +28,13 @@ const getData = (token) => {
             xhr.setRequestHeader("Authorization", "Bearer " + token);
           },
           success: (response) => {
-            console.log(response)
             dataSet = [...dataSet,...response.items]
             res.next = response.next
           }
         });
       }
-      return res.items
+      console.log(dataSet)
+      return dataSet
     }
   });
 }
