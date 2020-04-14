@@ -6,44 +6,6 @@ import AddedChart from './AddedChart'
 
 const tabs = [{name: "Weekday", time_range: "short_term"},{name: "Depressed", time_range: "medium_term"},{name: "Danceability", time_range: "long_term"}]
 
-const getData = (token) => {
-  let savedTracks = [];
-  $.ajax({
-    url: `https://api.spotify.com/v1/me/tracks`,
-    type: "GET",
-    data: { 
-      limit: 50
-    },
-    beforeSend: (xhr) => {
-      xhr.setRequestHeader("Authorization", "Bearer " + token);
-    },
-    success: (res) => {
-      savedTracks = [...res.items]
-      while (res.next){
-        $.ajax({
-          url: res.next,
-          type: "GET",
-          async: false,
-          data: { 
-            limit: 50
-          },
-          beforeSend: (xhr) => {
-            xhr.setRequestHeader("Authorization", "Bearer " + token);
-          },
-          success: (response) => {
-            savedTracks = [...savedTracks,...response.items]
-            res.next = response.next
-          }
-        });
-      }
-      console.log(savedTracks)
-      const dataSet = {savedTracks: savedTracks,weekday: getDataForWeekday(savedTracks)}
-      console.log(dataSet)
-      return dataSet
-    }
-  });
-}
-
 const getDataForWeekday = (tracks) => {
   const dataWeekday = [{day: "Sunday", count: 0, percentage:0},{day: "Monday", count: 0, percentage:0},{day: "Tuesday", count: 0, percentage:0},{day: "Wednesday", count: 0, percentage:0},{day: "Thursday", count: 0, percentage:0},{day: "Friday", count: 0, percentage:0},{day: "Saturday", count: 0, percentage:0}]
   tracks.forEach((track) => {
@@ -60,11 +22,46 @@ export default function SavedTab(props) {
   const [selected, setSelected] = useState(tabs[0].name)
   const [data, setData] = useState("")
 
+  const getData = () => {
+    let savedTracks = [];
+    $.ajax({
+      url: `https://api.spotify.com/v1/me/tracks`,
+      type: "GET",
+      data: { 
+        limit: 50
+      },
+      beforeSend: (xhr) => {
+        xhr.setRequestHeader("Authorization", "Bearer " + props.token);
+      },
+      success: (res) => {
+        savedTracks = [...res.items]
+        while (res.next){
+          $.ajax({
+            url: res.next,
+            type: "GET",
+            async: false,
+            data: { 
+              limit: 50
+            },
+            beforeSend: (xhr) => {
+              xhr.setRequestHeader("Authorization", "Bearer " + props.token);
+            },
+            success: (response) => {
+              savedTracks = [...savedTracks,...response.items]
+              res.next = response.next
+            }
+          });
+        }
+        const dataSet = {savedTracks: savedTracks,weekday: getDataForWeekday(savedTracks)}
+        setData(dataSet)
+      }
+    });
+  }
   
 
   useEffect(() => {
-    setData(getData(props.token))
-  }, [age])
+    getData()
+  }, [])
   
 
   return (
@@ -74,7 +71,7 @@ export default function SavedTab(props) {
             return <ListItem key={index} name={x.name} selected={selected} setAge={setSelected}/>})}
         </div>
         <div>
-          {data !== "" && selected === "Weekday" && <AddedChart data={data.weekday}/>}
+          {data !== "" ? <AddedChart data={data.weekday}/>:""}
         </div>
       </section>
   );
