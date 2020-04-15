@@ -52,27 +52,30 @@ export default function SavedTab(props) {
             }
           });
         }
-        for(let i = 0; i < savedTracks.length+100; i+=100){
-          let ids = savedTracks.map((track,index) => {
-            if(index < (i+100)){
+        for(let i = 0; i < savedTracks.length+100; i=i+100){
+          let ids = savedTracks.filter((track,index) => {
+            if(i-1 < index && index < (i+100)){
+              // console.log(index)
+              // console.log('yo')
               return track.track.id
             }
           })
+          console.log(ids.length)
           $.ajax({
             url: "https://api.spotify.com/v1/audio-features",
             type: "GET",
             // async: false,
-            // dataType: "JSON",
+            dataType: "application/json",
             // processData: false,
             data: { 
-              ids: "4JpKVNYnVcJ8tuMKjAj50A,2NRANZE9UCmPAS5XVbXL40"
+              ids: ids.join()
             },
             beforeSend: (xhr) => {
               xhr.setRequestHeader("Authorization", "Bearer " + props.token);
             },
             success: (response) => {
               // savedTracks = [...savedTracks,...response.items]
-              console.log(ids[0])
+              // console.log(ids[0])
 
               console.log(response)
             }
