@@ -1,10 +1,10 @@
 import React from 'react';
-import {Bar} from 'react-chartjs-2';
+import {Doughnut} from 'react-chartjs-2';
 
-export default function AddedChart(props) {
+export default function DoughnutChart(props) {
   return (
     <div className="chart">
-      <Bar data={{
+      <Doughnut data={{
         labels: props.data.map((x) => x.day),
         datasets: [{
         label: "Percentage of Saved Tracks",

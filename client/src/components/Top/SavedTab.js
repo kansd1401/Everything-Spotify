@@ -1,10 +1,10 @@
 import React,{useState, useEffect} from 'react';
 import * as $ from 'jquery';
 import ListItem from './ListItem'
-import AddedChart from './AddedChart'
+import Chart from './Chart'
 
 
-const tabs = [{name: "Weekday", time_range: "short_term"},{name: "Depressed", time_range: "medium_term"},{name: "Danceability", time_range: "long_term"}]
+const tabs = [{name: "Weekday", time_range: "short_term"},{name: "Depressed", time_range: "medium_term"},{name: "Dance", time_range: "long_term"}]
 
 const getDataForWeekday = (tracks) => {
   const dataWeekday = [{day: "Sunday", count: 0, percentage:0},{day: "Monday", count: 0, percentage:0},{day: "Tuesday", count: 0, percentage:0},{day: "Wednesday", count: 0, percentage:0},{day: "Thursday", count: 0, percentage:0},{day: "Friday", count: 0, percentage:0},{day: "Saturday", count: 0, percentage:0}]
@@ -16,6 +16,41 @@ const getDataForWeekday = (tracks) => {
     day.percentage = (day.count/tracks.length)*100
   })
   return dataWeekday
+}
+
+const getDataForValence = (tracks) => {
+  const dataValence = [{day: "Sad", count: 0, percentage:0},{day: "OK", count: 0, percentage:0},{day: "Happy", count: 0, percentage:0}]
+  tracks.forEach((x) => {
+    console.log(x.track.valence)
+    if(x.track.valence < 0.33){
+      dataValence[0].count++
+    }else if(x.track.valence > 0.66){
+      dataValence[2].count++
+    }else{
+      dataValence[1].count++
+    }
+  })
+  dataValence.forEach((day) => {
+    day.percentage = (day.count/tracks.length)*100
+  })
+  return dataValence
+}
+
+const getDataForDanceability = (tracks) => {
+  const data = [{day: "Chill Music", count: 0, percentage:0},{day: "Do what you want", count: 0, percentage:0},{day: "Party Song", count: 0, percentage:0}]
+  tracks.forEach((x) => {
+    if(x.track.danceability < 0.60){
+      data[0].count++
+    }else if(x.track.danceability > 0.80){
+      data[2].count++
+    }else{
+      data[1].count++
+    }
+  })
+  data.forEach((day) => {
+    day.percentage = (day.count/tracks.length)*100
+  })
+  return data
 }
 
 export default function SavedTab(props) {
@@ -75,16 +110,14 @@ export default function SavedTab(props) {
               response.audio_features.forEach((feature) => {
                 if (feature){
                   const index = savedTracks.findIndex((x) => x.track.id === feature.id)
-                  console.log(response)
-                  console.log(index)
                   savedTracks[index].track = {...savedTracks[index].track, ...feature}
                 }
               })
             }
           });
         }
-        const dataSet = {savedTracks: savedTracks,weekday: getDataForWeekday(savedTracks)}
         console.log(savedTracks)
+        const dataSet = {savedTracks: savedTracks,weekday: getDataForWeekday(savedTracks), valence: getDataForValence(savedTracks), danceability: getDataForDanceability(savedTracks)}
         setData(dataSet)
       }
     });
@@ -103,7 +136,9 @@ export default function SavedTab(props) {
             return <ListItem key={index} name={x.name} selected={selected} setAge={setSelected}/>})}
         </div>
         <div>
-          {data !== "" ? <AddedChart data={data.weekday}/>:""}
+          {data !== "" && selected === "Weekday"? <Chart data={data.weekday} chartType="bar"/>:""}
+          {data !== "" && selected === "Depressed"? <Chart data={data.valence} chartType="doughnut"/>:""}
+          {data !== "" && selected === "Dance"? <Chart data={data.danceability} chartType="doughnut"/>:""}
         </div>
       </section>
   );
