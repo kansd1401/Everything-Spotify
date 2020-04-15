@@ -73,7 +73,7 @@ export default function SavedTab(props) {
             },
             success: (response) => {
               response.audio_features.forEach((feature) => {
-                if (feature.id !== null){
+                if (feature){
                   const index = savedTracks.findIndex((x) => x.track.id === feature.id)
                   console.log(response)
                   console.log(index)
