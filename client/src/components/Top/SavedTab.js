@@ -57,15 +57,16 @@ export default function SavedTab(props) {
             if(i-1 < index && index < (i+100)){
               // console.log(index)
               // console.log('yo')
-              return track.track.id
+              return track 
             }
-          })
+          }).map((x) => x.track.id)
           console.log(ids.length)
+          console.log(ids.join())
           $.ajax({
             url: "https://api.spotify.com/v1/audio-features",
             type: "GET",
             // async: false,
-            dataType: "application/json",
+            // dataType: "application/json",
             // processData: false,
             data: { 
               ids: ids.join()
