@@ -24,6 +24,7 @@ export default function SavedTab(props) {
 
   const getData = () => {
     let savedTracks = [];
+    //Call to get the first 50 tracks
     $.ajax({
       url: `https://api.spotify.com/v1/me/tracks`,
       type: "GET",
@@ -34,6 +35,7 @@ export default function SavedTab(props) {
         xhr.setRequestHeader("Authorization", "Bearer " + props.token);
       },
       success: (res) => {
+        //sync calling with the next page api link provided by the intial call untill it's null which means no more tracks left.
         savedTracks = [...res.items]
         while (res.next){
           $.ajax({
@@ -53,21 +55,16 @@ export default function SavedTab(props) {
           });
         }
         for(let i = 0; i < savedTracks.length+100; i=i+100){
+          //Filters tracks to 100 then returns an array of their ids
           let ids = savedTracks.filter((track,index) => {
             if(i-1 < index && index < (i+100)){
-              // console.log(index)
-              // console.log('yo')
               return track 
             }
           }).map((x) => x.track.id)
-          console.log(ids.length)
-          console.log(ids.join())
           $.ajax({
             url: "https://api.spotify.com/v1/audio-features",
             type: "GET",
-            // async: false,
-            // dataType: "application/json",
-            // processData: false,
+            async: false,
             data: { 
               ids: ids.join()
             },
@@ -75,15 +72,19 @@ export default function SavedTab(props) {
               xhr.setRequestHeader("Authorization", "Bearer " + props.token);
             },
             success: (response) => {
-              // savedTracks = [...savedTracks,...response.items]
-              // console.log(ids[0])
-
-              console.log(response)
+              response.audio_features.forEach((feature) => {
+                if (feature.id !== null){
+                  const index = savedTracks.findIndex((x) => x.track.id === feature.id)
+                  console.log(response)
+                  console.log(index)
+                  savedTracks[index].track = {...savedTracks[index].track, ...feature}
+                }
+              })
             }
           });
         }
-        console.log(savedTracks)
         const dataSet = {savedTracks: savedTracks,weekday: getDataForWeekday(savedTracks)}
+        console.log(savedTracks)
         setData(dataSet)
       }
     });
