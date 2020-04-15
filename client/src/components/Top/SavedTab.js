@@ -59,13 +59,13 @@ export default function SavedTab(props) {
             }
           })
           $.ajax({
-            url: "https://api.spotify.com/v1/audio-features/",
+            url: "https://api.spotify.com/v1/audio-features",
             type: "GET",
             // async: false,
             // dataType: "JSON",
             // processData: false,
             data: { 
-              ids: ['4JpKVNYnVcJ8tuMKjAj50A','2NRANZE9UCmPAS5XVbXL40']
+              ids: "4JpKVNYnVcJ8tuMKjAj50A,2NRANZE9UCmPAS5XVbXL40"
             },
             beforeSend: (xhr) => {
               xhr.setRequestHeader("Authorization", "Bearer " + props.token);
