@@ -62,7 +62,9 @@ const getDataForDanceability = (tracks) => {
 }
 
 const getMeanData = (tracks) => {
-  return {valence: tracks.reduce((total,   currentValue => total + currentValue.track.valence))/tracks.length,danceability: tracks.reduce((total, currentValue => total + currentValue.track.danceability))/tracks.length,energy: tracks.reduce((total, currentValue => total + currentValue.track.energy))/tracks.length,instrumentalness: tracks.reduce((total, currentValue => total + currentValue.track.instrumentalness))/tracks.length, acoustiness: tracks.reduce((total, currentValue => total + currentValue.track.acoustiness))/tracks.length,liveness: tracks.reduce((total, currentValue => total + currentValue.track.liveness))/tracks.length,speechiness: tracks.reduce((total, currentValue => total + currentValue.track.speechiness))/tracks.length}
+  const organiser = (type) => val => val.track[type]
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  return {valence: tracks.map(organiser("valence")).reduce(reducer)/tracks.length}/*,danceability: ,energy: ,instrumentalness: ,acoustiness: ,liveness: ,speechiness }*/
 }
 
 export {getDataForDanceability, getDataForEnergy, getDataForValence, getDataForWeekday, getMeanData}
