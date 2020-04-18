@@ -4,7 +4,7 @@ import ListItem from './ListItem'
 import Chart from './Chart'
 
 
-const tabs = [{name: "Weekday", time_range: "short_term"},{name: "Depressed", time_range: "medium_term"},{name: "Dance", time_range: "long_term"}]
+const tabs = [{name: "Weekday", time_range: "short_term"},{name: "Depressed", time_range: "medium_term"},{name: "Dance", time_range: "long_term"},{name: "Energy", time_range: "long_term"}]
 
 const getDataForWeekday = (tracks) => {
   const dataWeekday = [{day: "Sunday", count: 0, percentage:0},{day: "Monday", count: 0, percentage:0},{day: "Tuesday", count: 0, percentage:0},{day: "Wednesday", count: 0, percentage:0},{day: "Thursday", count: 0, percentage:0},{day: "Friday", count: 0, percentage:0},{day: "Saturday", count: 0, percentage:0}]
@@ -19,21 +19,37 @@ const getDataForWeekday = (tracks) => {
 }
 
 const getDataForValence = (tracks) => {
-  const dataValence = [{day: "Sad", count: 0, percentage:0},{day: "OK", count: 0, percentage:0},{day: "Happy", count: 0, percentage:0}]
+  const data = [{day: "Sad", count: 0, percentage:0},{day: "OK", count: 0, percentage:0},{day: "Happy", count: 0, percentage:0}]
   tracks.forEach((x) => {
-    console.log(x.track.valence)
     if(x.track.valence < 0.33){
-      dataValence[0].count++
+      data[0].count++
     }else if(x.track.valence > 0.66){
-      dataValence[2].count++
+      data[2].count++
     }else{
-      dataValence[1].count++
+      data[1].count++
     }
   })
-  dataValence.forEach((day) => {
+  data.forEach((day) => {
     day.percentage = (day.count/tracks.length)*100
   })
-  return dataValence
+  return data
+}
+
+const getDataForEnergy = (tracks) => {
+  const data = [{day: "Low", count: 0, percentage:0},{day: "OK", count: 0, percentage:0},{day: "High", count: 0, percentage:0}]
+  tracks.forEach((x) => {
+    if(x.track.energy < 0.33){
+      data[0].count++
+    }else if(x.track.energy > 0.66){
+      data[2].count++
+    }else{
+      data[1].count++
+    }
+  })
+  data.forEach((day) => {
+    day.percentage = (day.count/tracks.length)*100
+  })
+  return data
 }
 
 const getDataForDanceability = (tracks) => {
@@ -125,7 +141,9 @@ export default function SavedTab(props) {
   
 
   useEffect(() => {
-    getData()
+    if(!data){
+      getData()
+    }
   }, [])
   
 
@@ -139,6 +157,7 @@ export default function SavedTab(props) {
           {data !== "" && selected === "Weekday"? <Chart data={data.weekday} chartType="bar"/>:""}
           {data !== "" && selected === "Depressed"? <Chart data={data.valence} chartType="doughnut"/>:""}
           {data !== "" && selected === "Dance"? <Chart data={data.danceability} chartType="doughnut"/>:""}
+          <Chart data={data.energy} chartType="doughnut"/>:""}
         </div>
       </section>
   );
