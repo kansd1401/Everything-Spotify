@@ -133,7 +133,7 @@ export default function SavedTab(props) {
           });
         }
         console.log(savedTracks)
-        const dataSet = {savedTracks: savedTracks,weekday: getDataForWeekday(savedTracks), valence: getDataForValence(savedTracks), danceability: getDataForDanceability(savedTracks)}
+        const dataSet = {savedTracks: savedTracks,weekday: getDataForWeekday(savedTracks), valence: getDataForValence(savedTracks), danceability: getDataForDanceability(savedTracks), energy: getDataForEnergy(savedTracks)}
         setData(dataSet)
       }
     });
@@ -157,6 +157,7 @@ export default function SavedTab(props) {
           {data !== "" && selected === "Weekday"? <Chart data={data.weekday} chartType="bar"/>:""}
           {data !== "" && selected === "Depressed"? <Chart data={data.valence} chartType="doughnut"/>:""}
           {data !== "" && selected === "Dance"? <Chart data={data.danceability} chartType="doughnut"/>:""}
+          {data !== "" && selected === "Energy"?
           <Chart data={data.energy} chartType="doughnut"/>:""}
         </div>
       </section>
