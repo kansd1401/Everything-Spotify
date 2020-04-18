@@ -72,7 +72,7 @@ export default function SavedTab(props) {
           });
         }
         console.log(savedTracks)
-        const dataSet = {savedTracks: savedTracks,weekday: getDataForWeekday(savedTracks), valence: getDataForValence(savedTracks), danceability: getDataForDanceability(savedTracks), energy: getDataForEnergy(savedTracks), mean: getMeanData(savedTracks)}
+        const dataSet = {savedTracks: savedTracks,weekday: getDataForWeekday(savedTracks), valence: getDataForValence(savedTracks), danceability: getDataForDanceability(savedTracks), energy: getDataForEnergy(savedTracks), mean: getMeanData(savedTracks).sort((a,b)=> b.percentage - a.percentage)}
         console.log(dataSet.mean)
         setData(dataSet)
       }
