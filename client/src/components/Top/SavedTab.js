@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react';
 import * as $ from 'jquery';
 import ListItem from './ListItem'
 import Chart from './Chart'
-import {getDataForDanceability, getDataForEnergy, getDataForValence, getDataForWeekday} from "../../helpers/dataConversion"
+import {getDataForDanceability, getDataForEnergy, getDataForValence, getDataForWeekday, getMeanData} from "../../helpers/dataConversion"
 
 
 const tabs = [{name: "Weekday", time_range: "short_term"},{name: "Depressed", time_range: "medium_term"},{name: "Dance", time_range: "long_term"},{name: "Energy", time_range: "long_term"}]
@@ -73,6 +73,7 @@ export default function SavedTab(props) {
         }
         console.log(savedTracks)
         const dataSet = {savedTracks: savedTracks,weekday: getDataForWeekday(savedTracks), valence: getDataForValence(savedTracks), danceability: getDataForDanceability(savedTracks), energy: getDataForEnergy(savedTracks)}
+        console.log(getMeanData(savedTracks))
         setData(dataSet)
       }
     });
