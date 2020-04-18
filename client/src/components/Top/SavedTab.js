@@ -5,7 +5,7 @@ import Chart from './Chart'
 import {getDataForDanceability, getDataForEnergy, getDataForValence, getDataForWeekday, getMeanData} from "../../helpers/dataConversion"
 
 
-const tabs = [{name: "Weekday", time_range: "short_term"},{name: "Depressed", time_range: "medium_term"},{name: "Dance", time_range: "long_term"},{name: "Energy", time_range: "long_term"}]
+const tabs = [{name: "Weekday", time_range: "short_term"},{name: "Depressed", time_range: "medium_term"},{name: "Dance", time_range: "long_term"},{name: "Energy", time_range: "long_term"},{name: "Mean", time_range: "long_term"}]
 
 
 export default function SavedTab(props) {
@@ -72,8 +72,8 @@ export default function SavedTab(props) {
           });
         }
         console.log(savedTracks)
-        const dataSet = {savedTracks: savedTracks,weekday: getDataForWeekday(savedTracks), valence: getDataForValence(savedTracks), danceability: getDataForDanceability(savedTracks), energy: getDataForEnergy(savedTracks)}
-        console.log(getMeanData(savedTracks))
+        const dataSet = {savedTracks: savedTracks,weekday: getDataForWeekday(savedTracks), valence: getDataForValence(savedTracks), danceability: getDataForDanceability(savedTracks), energy: getDataForEnergy(savedTracks), mean: getMeanData(savedTracks)}
+        console.log(dataSet.mean)
         setData(dataSet)
       }
     });
@@ -99,6 +99,9 @@ export default function SavedTab(props) {
           {data !== "" && selected === "Dance"? <Chart data={data.danceability} chartType="doughnut"/>:""}
           {data !== "" && selected === "Energy"?
           <Chart data={data.energy} chartType="doughnut"/>:""}
+          {data !== "" && selected === "Mean"?
+          <Chart data={data.mean} chartType="mean"/>:""}
+          
         </div>
       </section>
   );
