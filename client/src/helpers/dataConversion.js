@@ -65,8 +65,18 @@ const getMeanData = (tracks) => {
   const total = tracks.length
   const organiser = (type) => val => val.track[type]
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
-  const getDataForValue = x => tracks.map(organiser(x)).reduce(reducer)/total
+  const getDataForValue = x => Number((tracks.map(organiser(x)).reduce(reducer)/total).toFixed(2))
   return [{day: 'Valence', percentage: getDataForValue("valence")},{day: 'Danceability', percentage: getDataForValue("danceability")},{day: 'Energy', percentage: getDataForValue("energy")},{day: 'Instrumentalness', percentage: getDataForValue("instrumentalness")},{day: 'Acousticness', percentage: getDataForValue("acousticness")},{day: 'Liveness', percentage: getDataForValue("liveness")},{day: 'Speechiness', percentage: getDataForValue("speechiness")}]
 }
 
-export {getDataForDanceability, getDataForEnergy, getDataForValence, getDataForWeekday, getMeanData}
+const getStdDeviation = (tracks, means) => {
+  means.forEach((val) => { 
+    console.log(typeof tracks[0].track[val.day.toLowerCase()])
+    const mean = val.percentage
+    console.log(mean)
+    val.percentage = tracks.map( x => x.track[val.day.toLowerCase()] - mean)
+  })
+  console.log(means)
+}
+
+export {getDataForDanceability, getDataForEnergy, getDataForValence, getDataForWeekday, getMeanData, getStdDeviation}

@@ -24,7 +24,7 @@ export default function Chart(props) {
           'rgba(153, 102, 255)',
           'rgba(255, 159, 64)'
         ],
-        data: props.data.map((x) => x.percentage),
+        data: props.data.map(x => x.percentage),
         }]
     }}/>}
     {props.chartType === "doughnut" && <Doughnut data={{
