@@ -100,7 +100,7 @@ export default function SavedTab(props) {
           {data !== "" && selected === "Energy"?
           <Chart data={data.energy} chartType="doughnut"/>:""}
           {data !== "" && selected === "Mean"?
-          <Chart data={data.mean} chartType="mean"/>:""}
+          <Chart data={data.mean} chartType="bar"/>:""}
           
         </div>
       </section>
