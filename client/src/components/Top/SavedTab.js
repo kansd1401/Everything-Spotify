@@ -15,11 +15,11 @@ export default function SavedTab(props) {
   const [data, setData] = useState("")
   const [playlists, setPlaylists] = useState("")
 
-  const getData = () => {
+  const getData = (playlistSelected) => {
     let savedTracks = [];
     //Call to get the first 50 tracks
     $.ajax({
-      url: `https://api.spotify.com/v1/me/tracks`,
+      url: playlistSelected.tracks.href,
       type: "GET",
       data: { 
         limit: 50
@@ -75,6 +75,10 @@ export default function SavedTab(props) {
           });
         }
         setData(getDataSet(savedTracks))
+        playlistSelected["data"] = savedTracks
+        const updatedPlayLists = [...playlists]
+        updatedPlayLists[playlists.findIndex( list => list.name === playlistSelected.name)] = playlistSelected
+        setPlaylists(updatedPlayLists)
       }
     });
   }
@@ -91,7 +95,7 @@ export default function SavedTab(props) {
       },
       success: (res) => {
         setPlaylists([{name: "Liked Songs", tracks: {href: "https://api.spotify.com/v1/me/tracks"}},...res.items])
-        console.log(res.items)
+        setPlaylist("Liked Songs")
       }
     })
   }
@@ -100,14 +104,20 @@ export default function SavedTab(props) {
   };
   
   useEffect(() => {
-    
-    if(!data){
-      // getData()
+    if (playlists){
+      const playlistSelected = playlists[playlists.findIndex( list => list.name === playlist)]
+      console.log('yoo')
+      console.log(playlistSelected)
+      if(!playlistSelected.data){
+        getData(playlistSelected)
+      }
     }
+    console.log(data)
   }, [playlist])
+
   useEffect(() => {
     getPlaylists()
-    console.log(playlist)
+    // console.log(playlist)
   }, [])
   
 
