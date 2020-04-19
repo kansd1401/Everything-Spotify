@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react';
 import * as $ from 'jquery';
 import ListItem from './ListItem'
 import Chart from './Chart'
+import {Form} from 'react-bootstrap'
 import {getDataSet} from "../../helpers/dataConversion"
 
 
@@ -87,7 +88,8 @@ export default function SavedTab(props) {
         xhr.setRequestHeader("Authorization", "Bearer " + props.token);
       },
       success: (res) => {
-        console.log(res)
+        setData(res.items)
+        console.log(res.items)
       }
     })
   }
@@ -103,6 +105,12 @@ export default function SavedTab(props) {
 
   return (
       <section className="top">
+        <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Label>Select a Playlist</Form.Label>
+          <Form.Control as="select">
+            {}
+          </Form.Control>
+        </Form.Group>
         <div className="age-list">
           {tabs.map((x,index) => {
             return <ListItem key={index} name={x.name} selected={selected} setAge={setSelected}/>})}

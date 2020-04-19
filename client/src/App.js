@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import TopList from './components/Top'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "8beaa14c429347dc96de7ca4c2434e11";
