@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react';
 import * as $ from 'jquery';
 import ListItem from './ListItem'
 import Chart from './Chart'
-import {getDataForDanceability, getDataForEnergy, getDataForValence, getDataForWeekday, getMeanData, getStdDeviation} from "../../helpers/dataConversion"
+import {getDataSet} from "../../helpers/dataConversion"
 
 
 const tabs = [{name: "Weekday"},{name: "Depressed"},{name: "Dance"},{name: "Energy"},{name: "Mean"},{name: "Standard Deviation"}]
@@ -71,10 +71,7 @@ export default function SavedTab(props) {
             }
           });
         }
-        console.log(savedTracks)
-        const dataSet = {savedTracks: savedTracks,weekday: getDataForWeekday(savedTracks), valence: getDataForValence(savedTracks), danceability: getDataForDanceability(savedTracks), energy: getDataForEnergy(savedTracks), mean: getMeanData(savedTracks).sort((a,b)=> b.percentage - a.percentage), std: getStdDeviation(savedTracks, getMeanData(savedTracks)).sort((a,b)=> b.percentage - a.percentage)}
-        console.log(dataSet.std)
-        setData(dataSet)
+        setData(getDataSet(savedTracks))
       }
     });
   }

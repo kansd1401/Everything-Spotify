@@ -80,8 +80,8 @@ const getStdDeviation = (tracks, means) => {
   return means
 }
 
-const getDataSet = (tracks) => {
-
+const getDataSet = (savedTracks) => {
+  return {savedTracks: savedTracks,weekday: getDataForWeekday(savedTracks), valence: getDataForValence(savedTracks), danceability: getDataForDanceability(savedTracks), energy: getDataForEnergy(savedTracks), mean: getMeanData(savedTracks).sort((a,b)=> b.percentage - a.percentage), std: getStdDeviation(savedTracks, getMeanData(savedTracks)).sort((a,b)=> b.percentage - a.percentage)}
 }
 
-export {getDataForDanceability, getDataForEnergy, getDataForValence, getDataForWeekday, getMeanData, getStdDeviation}
+export {getDataSet}
