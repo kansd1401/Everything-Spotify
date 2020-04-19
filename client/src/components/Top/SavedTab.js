@@ -90,7 +90,7 @@ export default function SavedTab(props) {
         xhr.setRequestHeader("Authorization", "Bearer " + props.token);
       },
       success: (res) => {
-        setPlaylists(res.items)
+        setPlaylists([{name: "Liked Songs", tracks: {href: "https://api.spotify.com/v1/me/tracks"}},...res.items])
         console.log(res.items)
       }
     })
@@ -99,14 +99,16 @@ export default function SavedTab(props) {
     setPlaylist(event.target.value);
   };
   
-
   useEffect(() => {
-    console.log(playlist)
-    getPlaylists()
+    
     if(!data){
       // getData()
     }
   }, [playlist])
+  useEffect(() => {
+    getPlaylists()
+    console.log(playlist)
+  }, [])
   
 
   return (
@@ -114,7 +116,7 @@ export default function SavedTab(props) {
       {playlists !== "" ? <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>Select a Playlist</Form.Label>
           <Form.Control as="select" onChange={handleChange}>
-  {playlists.map(playlist => <option>{playlist.name}</option>)}
+  {playlists.map(list => <option key={list.id}>{list.name}</option>)}
           </Form.Control>
         </Form.Group>: ""}
         <div className="age-list">
