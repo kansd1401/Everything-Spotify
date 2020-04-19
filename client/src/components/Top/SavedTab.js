@@ -78,7 +78,7 @@ export default function SavedTab(props) {
 
   const getPlaylists = () => {
     $.ajax({
-      url: `https://api.spotify.com/v1/me/tracks`,
+      url: `https://api.spotify.com/v1/me/playlists`,
       type: "GET",
       data: { 
         limit: 50
@@ -87,14 +87,16 @@ export default function SavedTab(props) {
         xhr.setRequestHeader("Authorization", "Bearer " + props.token);
       },
       success: (res) => {
-
-      })
+        console.log(res)
+      }
+    })
   }
   
 
   useEffect(() => {
+    getPlaylists()
     if(!data){
-      getData()
+      // getData()
     }
   }, [])
   
