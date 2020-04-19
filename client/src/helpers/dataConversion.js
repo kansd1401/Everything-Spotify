@@ -73,8 +73,11 @@ const getStdDeviation = (tracks, means) => {
   means.forEach((val) => { 
     console.log(typeof tracks[0].track[val.day.toLowerCase()])
     const mean = val.percentage
-    console.log(mean)
-    val.percentage = tracks.map( x => x.track[val.day.toLowerCase()] - mean)
+    console.log(mean  )
+    val.percentage = Math.sqrt(tracks.map((x) => {
+      const result = (Number(x.track[val.day.toLowerCase()] - mean).toFixed(2)*100)
+      return Math.pow(result,2)
+    }).reduce((acc, cur) => acc+cur)/tracks.length)
   })
   console.log(means)
 }
