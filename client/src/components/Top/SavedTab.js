@@ -12,6 +12,7 @@ const tabs = [{name: "Weekday"},{name: "Depressed"},{name: "Dance"},{name: "Ener
 export default function SavedTab(props) {
   const [selected, setSelected] = useState(tabs[0].name)
   const [data, setData] = useState("")
+  const [playlists, setPlaylists] = useState("")
 
   const getData = () => {
     let savedTracks = [];
@@ -88,7 +89,7 @@ export default function SavedTab(props) {
         xhr.setRequestHeader("Authorization", "Bearer " + props.token);
       },
       success: (res) => {
-        setData(res.items)
+        setPlaylists(res.items)
         console.log(res.items)
       }
     })
@@ -105,12 +106,12 @@ export default function SavedTab(props) {
 
   return (
       <section className="top">
-        <Form.Group controlId="exampleForm.ControlSelect1">
+      {playlists !== "" ? <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>Select a Playlist</Form.Label>
           <Form.Control as="select">
-            {}
+  {playlists.map(playlist => <option>{playlist.name}</option>)}
           </Form.Control>
-        </Form.Group>
+        </Form.Group>: ""}
         <div className="age-list">
           {tabs.map((x,index) => {
             return <ListItem key={index} name={x.name} selected={selected} setAge={setSelected}/>})}
