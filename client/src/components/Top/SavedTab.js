@@ -75,6 +75,21 @@ export default function SavedTab(props) {
       }
     });
   }
+
+  const getPlaylists = () => {
+    $.ajax({
+      url: `https://api.spotify.com/v1/me/tracks`,
+      type: "GET",
+      data: { 
+        limit: 50
+      },
+      beforeSend: (xhr) => {
+        xhr.setRequestHeader("Authorization", "Bearer " + props.token);
+      },
+      success: (res) => {
+
+      })
+  }
   
 
   useEffect(() => {
