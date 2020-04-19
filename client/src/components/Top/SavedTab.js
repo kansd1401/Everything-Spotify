@@ -75,7 +75,7 @@ export default function SavedTab(props) {
           });
         }
         setData(getDataSet(savedTracks))
-        playlistSelected["data"] = savedTracks
+        playlistSelected["data"] = getDataSet(savedTracks)
         const updatedPlayLists = [...playlists]
         updatedPlayLists[playlists.findIndex( list => list.name === playlistSelected.name)] = playlistSelected
         setPlaylists(updatedPlayLists)
@@ -110,9 +110,10 @@ export default function SavedTab(props) {
       console.log(playlistSelected)
       if(!playlistSelected.data){
         getData(playlistSelected)
+      }else{
+        setData(playlists.find( list => list.name === playlist).data)
       }
     }
-    console.log(data)
   }, [playlist])
 
   useEffect(() => {
