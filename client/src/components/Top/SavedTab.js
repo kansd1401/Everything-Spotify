@@ -11,6 +11,7 @@ const tabs = [{name: "Weekday"},{name: "Depressed"},{name: "Dance"},{name: "Ener
 
 export default function SavedTab(props) {
   const [selected, setSelected] = useState(tabs[0].name)
+  const [playlist, setPlaylist] = useState("")
   const [data, setData] = useState("")
   const [playlists, setPlaylists] = useState("")
 
@@ -94,21 +95,25 @@ export default function SavedTab(props) {
       }
     })
   }
+  const handleChange = (event) => {
+    setPlaylist(event.target.value);
+  };
   
 
   useEffect(() => {
+    console.log(playlist)
     getPlaylists()
     if(!data){
       // getData()
     }
-  }, [])
+  }, [playlist])
   
 
   return (
       <section className="top">
       {playlists !== "" ? <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>Select a Playlist</Form.Label>
-          <Form.Control as="select">
+          <Form.Control as="select" onChange={handleChange}>
   {playlists.map(playlist => <option>{playlist.name}</option>)}
           </Form.Control>
         </Form.Group>: ""}
