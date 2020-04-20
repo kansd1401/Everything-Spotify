@@ -1,7 +1,10 @@
 import React from 'react';
 import {Bar, Doughnut} from 'react-chartjs-2';
+import Track from './Track'
 
 export default function Chart(props) {
+  const highest = props.data[0].highest
+  const lowest = props.data[0].lowest
   return (
     <div className="chart">
       {props.chartType === "bar" && <Bar data={{
@@ -50,6 +53,23 @@ export default function Chart(props) {
         data: props.data.map((x) => x.percentage),
         }]
     }}/>}
+      {highest ? <Track 
+       key={0}
+       rank={1}
+       cover={highest.album.images[2].url}
+       artists={highest.artists}
+       name={highest.name}
+       explicit={highest.explicit}
+      />: ""}
+      {lowest ? <Track 
+       key={2}
+       rank={2}
+       cover={lowest.album.images[2].url}
+       artists={lowest.artists}
+       name={lowest.name}
+       explicit={lowest.explicit}
+      />: ""}
+      
     </div>
   );
 }

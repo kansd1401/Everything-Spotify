@@ -79,6 +79,7 @@ export default function SavedTab(props) {
         const updatedPlayLists = [...playlists]
         updatedPlayLists[playlists.findIndex( list => list.name === playlistSelected.name)] = playlistSelected
         setPlaylists(updatedPlayLists)
+        console.log(data)
       }
     });
   }
@@ -106,8 +107,6 @@ export default function SavedTab(props) {
   useEffect(() => {
     if (playlists){
       const playlistSelected = playlists[playlists.findIndex( list => list.name === playlist)]
-      console.log('yoo')
-      console.log(playlistSelected)
       if(!playlistSelected.data){
         getData(playlistSelected)
       }else{
@@ -127,7 +126,7 @@ export default function SavedTab(props) {
       {playlists !== "" ? <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>Select a Playlist</Form.Label>
           <Form.Control as="select" onChange={handleChange}>
-  {playlists.map(list => <option key={list.id}>{list.name}</option>)}
+  {playlists.map(list => <option key={list.name}>{list.name}</option>)}
           </Form.Control>
         </Form.Group>: ""}
         <div className="age-list">
