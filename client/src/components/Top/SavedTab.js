@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react';
 import * as $ from 'jquery';
 import ListItem from './ListItem'
 import Chart from './Chart'
-import {Form} from 'react-bootstrap'
+import {Form, Spinner} from 'react-bootstrap'
 import {getDataSet} from "../../helpers/dataConversion"
 
 
@@ -14,8 +14,11 @@ export default function SavedTab(props) {
   const [playlist, setPlaylist] = useState("")
   const [data, setData] = useState("")
   const [playlists, setPlaylists] = useState("")
+  const [loading, setLoading] = useState(true)
+  console.log(loading)
 
   const getData = (playlistSelected) => {
+    setLoading(true)
     let savedTracks = [];
     //Call to get the first 50 tracks
     $.ajax({
@@ -74,12 +77,13 @@ export default function SavedTab(props) {
             }
           });
         }
-        setData(getDataSet(savedTracks))
-        playlistSelected["data"] = getDataSet(savedTracks)
+        const dataSet = getDataSet(savedTracks)
+        setData(dataSet)
+        playlistSelected["data"] = dataSet
         const updatedPlayLists = [...playlists]
         updatedPlayLists[playlists.findIndex( list => list.name === playlistSelected.name)] = playlistSelected
         setPlaylists(updatedPlayLists)
-        console.log(data)
+        setLoading(false)
       }
     });
   }
@@ -129,22 +133,26 @@ export default function SavedTab(props) {
   {playlists.map(list => <option key={list.name}>{list.name}</option>)}
           </Form.Control>
         </Form.Group>: ""}
-        <div className="age-list">
-          {tabs.map((x,index) => {
-            return <ListItem key={index} name={x.name} selected={selected} setAge={setSelected}/>})}
-        </div>
+        { !loading ?
         <div>
-          {data !== "" && selected === "Weekday"? <Chart data={data.weekday} chartType="bar"/>:""}
-          {data !== "" && selected === "Depressed"? <Chart data={data.valence} chartType="doughnut"/>:""}
-          {data !== "" && selected === "Dance"? <Chart data={data.danceability} chartType="doughnut"/>:""}
-          {data !== "" && selected === "Energy"?
-          <Chart data={data.energy} chartType="doughnut"/>:""}
-          {data !== "" && selected === "Mean"?
-          <Chart data={data.mean} chartType="bar"/>:""}
-          {data !== "" && selected === "Standard Deviation"?
-          <Chart data={data.std} chartType="bar"/>:""}
-          
+          <div className="age-list">
+            {tabs.map((x,index) => {
+              return <ListItem key={index} name={x.name} selected={selected} setAge={setSelected}/>})}
+          </div>
+          <div>
+            {data !== "" && selected === "Weekday"? <Chart data={data.weekday} chartType="bar"/>:""}
+            {data !== "" && selected === "Depressed"? <Chart data={data.valence} chartType="doughnut"/>:""}
+            {data !== "" && selected === "Dance"? <Chart data={data.danceability} chartType="doughnut"/>:""}
+            {data !== "" && selected === "Energy"?
+            <Chart data={data.energy} chartType="doughnut"/>:""}
+            {data !== "" && selected === "Mean"?
+            <Chart data={data.mean} chartType="bar"/>:""}
+            {data !== "" && selected === "Standard Deviation"?
+            <Chart data={data.std} chartType="bar"/>:""}      
+          </div>
         </div>
+        : <Spinner animation="border"/>}
+
       </section>
   );
 }
