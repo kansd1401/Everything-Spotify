@@ -70,7 +70,7 @@
     // padding-left: 1rem;
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
-    background: #1505ee;
+    background: $violet;
     overflow: hidden;
   }
   &__info--explicit {
@@ -95,7 +95,7 @@
   align-self: center;
   &__item {
     width: 18%;
-    background-color:$white;
+    background-color:$orange;
     color: $black;
     min-height: 9rem;
     min-width: 5rem;
@@ -105,17 +105,17 @@
     font-size: x-large;
 
     &:hover {
-      background-color: $grey;
+      background-color: $purple;
       cursor: pointer;
       color: $black;
     }
 
     &--selected {
-      background-color: $blue;
+      background-color: $violet;
       color: $white;
 
       &:hover {
-        background-color: $blue;
+        background-color: $violet;
         color: $white;
       }
     }

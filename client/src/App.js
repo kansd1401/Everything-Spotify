@@ -1,7 +1,8 @@
-import React from 'react';
+import React,{ useState} from 'react';
 import './App.css';
 import TopList from './components/Top'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ListItem from './components/Top/ListItem'
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "8beaa14c429347dc96de7ca4c2434e11";
@@ -12,6 +13,7 @@ const scopes = [
   "user-top-read",
   "user-library-read"
 ];
+const tabs = ["Top Tracks","Top Artists","Genre Statistics"]
 
 // Get the hash of the url
 const hash = window.location.hash
@@ -28,11 +30,19 @@ window.location.hash = "";
 
 function App() {
   const token = hash.access_token
+  const [selected, setSelected] = useState(tabs[2])
 
   return (
     <div className="App">
       <header className="App-header">
-        {token ? <TopList token={token}/> : <a
+        <div className="header">
+          <div className="age-list">
+            {tabs.map((x,index) => {
+              return <ListItem key={index} name={x} selected={selected} setAge={setSelected}/>})}
+          </div>
+        </div> 
+        {token && <TopList token={token} selected={selected}/>}
+        {!token && <a
             className="btn btn--loginApp-link"
             href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}
           >
