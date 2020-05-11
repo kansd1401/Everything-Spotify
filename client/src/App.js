@@ -35,6 +35,7 @@ function App() {
   return (
     <div className="App">
         <div className="header">
+          <h1>Everything Spotify</h1>
           <div className="age-list">
             {tabs.map((x,index) => {
               return <HeaderList key={index} name={x} selected={selected} setAge={setSelected}/>})}
@@ -42,12 +43,11 @@ function App() {
         </div> 
       <header className="App-header">
         {token && <TopList token={token} selected={selected}/>}
-        {!token && <a
-            className="btn btn--loginApp-link"
+        {!token && <div className="login"><a
             href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}
           >
             Login to Spotify
-        </a>}
+        </a></div>}
       </header>
     </div>
   );
