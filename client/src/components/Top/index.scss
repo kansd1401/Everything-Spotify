@@ -138,6 +138,46 @@
   }
 }
 
+.header-list {
+  display: flex;
+  width: 100%;
+  align-self: center;
+  &__item {
+    width: 18%;
+    background-color:$orange;
+    color: $black;
+    min-height: 9rem;
+    min-width: 5rem;
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    font-size: x-large;
+
+    &:hover {
+      background-color: $purple;
+      cursor: pointer;
+      color: $black;
+    }
+
+    &--selected {
+      background-color: $violet;
+      color: $white;
+
+      &:hover {
+        background-color: $violet;
+        color: $white;
+      }
+    }
+    h3{
+      font-weight: bold;
+      align-self: center;
+      text-align:center;
+      padding-top: 0.4rem;
+      padding-bottom: 0.4rem;
+    }
+  }
+}
+
 .chart{
   height: 50%;
   widows: 80%;

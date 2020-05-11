@@ -2,7 +2,7 @@ import React,{ useState} from 'react';
 import './App.css';
 import TopList from './components/Top'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ListItem from './components/Top/ListItem'
+import HeaderList from './components/Top/HearderList'
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "8beaa14c429347dc96de7ca4c2434e11";
@@ -37,7 +37,7 @@ function App() {
         <div className="header">
           <div className="age-list">
             {tabs.map((x,index) => {
-              return <ListItem key={index} name={x} selected={selected} setAge={setSelected}/>})}
+              return <HeaderList key={index} name={x} selected={selected} setAge={setSelected}/>})}
           </div>
         </div> 
       <header className="App-header">
