@@ -36,7 +36,7 @@ function App() {
     <div className="App">
         <div className="header">
           <h1>Everything Spotify</h1>
-          <div className="age-list">
+          <div className="header-list">
             {tabs.map((x,index) => {
               return <HeaderList key={index} name={x} selected={selected} setAge={setSelected}/>})}
           </div>
