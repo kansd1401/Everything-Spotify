@@ -1,8 +1,8 @@
-$grey: #dddddd;
-$white: #fff;
-$black: black;
-$blue: #9b1e1e;
+@import '../variables.scss';
 
+.App-header{
+  background-color: $dark-blue;
+}
 
 .list{
   display: flex;
