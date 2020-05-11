@@ -2,6 +2,14 @@
 
 .App-header{
   background-color: $dark-blue;
+  align-content: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+.header{
+  background-color: $purple;
+  width: 100%;
 }
 
 .list{
