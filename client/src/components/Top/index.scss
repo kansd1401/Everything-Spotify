@@ -13,12 +13,13 @@
   top: 0;
   display: flex;
   flex-direction: row;
-  background-color: $purple;
+  background-color: $violet;
   width: 100%;
   h1{
     left: 0;
-    width: 12rem;
+    width: fit-content;
     margin-right: 30rem;
+    color: $blue;
   }
 }
 
@@ -85,7 +86,6 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    // padding-left: 1rem;
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     background: $violet;
@@ -152,8 +152,7 @@
   align-self: center;
   &__item {
     width: fit-content;
-    background-color:$orange;
-    color: $black;
+    color: $white;
     min-height: 5rem;
     min-width: 5rem;
     padding: 1rem;
@@ -162,17 +161,14 @@
     font-size: x-large;
 
     &:hover {
-      background-color: $purple;
       cursor: pointer;
-      color: $black;
+      color: $blue;
     }
 
     &--selected {
-      background-color: $violet;
-      color: $white;
+      color: $blue;
 
       &:hover {
-        background-color: $violet;
         color: $white;
       }
     }
