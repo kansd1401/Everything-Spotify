@@ -151,7 +151,7 @@ export default function SavedTab(props) {
             <Chart data={data.std} chartType="bar"/>:""}      
           </div>
         </div>
-        : <Spinner animation="border"/>}
+        : <Spinner animation="border"  variant="dark"/>}
 
       </section>
   );
