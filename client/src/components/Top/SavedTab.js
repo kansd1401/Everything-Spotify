@@ -130,7 +130,7 @@ export default function SavedTab(props) {
       {playlists !== "" ? <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>Select a Playlist</Form.Label>
           <Form.Control as="select" onChange={handleChange}>
-  {playlists.map(list => <option key={list.name}>{list.name}</option>)}
+      {playlists.map(list => <option key={list.name}>{list.name}</option>)}
           </Form.Control>
         </Form.Group>: ""}
         { !loading ?
