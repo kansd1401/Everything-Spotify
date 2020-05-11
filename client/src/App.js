@@ -34,13 +34,13 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
         <div className="header">
           <div className="age-list">
             {tabs.map((x,index) => {
               return <ListItem key={index} name={x} selected={selected} setAge={setSelected}/>})}
           </div>
         </div> 
+      <header className="App-header">
         {token && <TopList token={token} selected={selected}/>}
         {!token && <a
             className="btn btn--loginApp-link"
