@@ -15,7 +15,6 @@ export default function SavedTab(props) {
   const [data, setData] = useState("")
   const [playlists, setPlaylists] = useState("")
   const [loading, setLoading] = useState(true)
-  console.log(loading)
 
   const getData = (playlistSelected) => {
     setLoading(true)
@@ -127,14 +126,14 @@ export default function SavedTab(props) {
 
   return (
       <section className="top">
-      {playlists !== "" ? <Form.Group controlId="exampleForm.ControlSelect1">
-          <Form.Label>Select a Playlist</Form.Label>
-          <Form.Control as="select" onChange={handleChange}>
-      {playlists.map(list => <option key={list.name}>{list.name}</option>)}
-          </Form.Control>
-        </Form.Group>: ""}
         { !loading ?
         <div>
+          {playlists !== "" ? <Form.Group controlId="exampleForm.ControlSelect1">
+              <Form.Label>Select a Playlist</Form.Label>
+              <Form.Control as="select" onChange={handleChange}>
+          {playlists.map(list => <option key={list.name}>{list.name}</option>)}
+              </Form.Control>
+            </Form.Group>: ""}
           <div className="age-list">
             {tabs.map((x,index) => {
               return <ListItem key={index} name={x.name} selected={selected} setAge={setSelected}/>})}
@@ -151,7 +150,7 @@ export default function SavedTab(props) {
             <Chart data={data.std} chartType="bar"/>:""}      
           </div>
         </div>
-        : <Spinner animation="border"  variant="dark"/>}
+        : <div className="loading-tab"><Spinner animation="border"  variant="light"/></div>}
 
       </section>
   );

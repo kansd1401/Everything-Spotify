@@ -12,7 +12,7 @@ export default function Track(props) {
   return (
     <Palette src={props.cover} crossOrigin="Anonymous" colorCount={2} format="hex">
     {({ data, loading }) => {
-      if (loading) return <div className="loading"><Spinner animation="border"  variant="light"/></div>;
+      if (loading) return <div className="loading-track"><Spinner animation="border"  variant="light"/></div>;
       return (
           <article className="track" style={{ background: data[1], color: data[0] }}>
             <img className="track__thumbnail" src={props.cover} alt="Track" />
