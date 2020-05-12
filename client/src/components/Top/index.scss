@@ -18,10 +18,15 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   top: 0;
+  flex-wrap: wrap ;
+  justify-content: space-between;
   display: flex;
   flex-direction: row;
   background-color: $purple;
   width: 100%;
+  &__logo{
+    max-width: 30rem;
+  }
   h1{
     font-family: 'Orbitron', sans-serif;
     // font-family: 'Yesteryear', cursive;
@@ -29,7 +34,6 @@
     font-size: 3rem;
     font-weight: bolder;
     width: fit-content;
-    margin-right: 30rem;
     color: $grey;
   }
 }

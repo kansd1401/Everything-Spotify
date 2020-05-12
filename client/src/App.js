@@ -35,7 +35,9 @@ function App() {
   return (
     <div className="App">
         <div className="header">
-          <h1>EVERYTHING SPOTIFY</h1>
+          <div className="header__logo">
+            <h1>EVERYTHING SPOTIFY</h1>
+          </div>
           <div className="header-list">
             {tabs.map((x,index) => {
               return <HeaderList key={index} name={x} selected={selected} setAge={setSelected}/>})}
