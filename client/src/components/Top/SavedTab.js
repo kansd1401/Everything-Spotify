@@ -149,7 +149,7 @@ export default function SavedTab(props) {
             <Chart data={data.std} chartType="bar"/>:""}      
           </div>
         </div>
-        : <div className="loading-tab"><Spinner animation="border"  variant="light"/></div>}
+        : <div className="loading-tab"><Spinner animation="border"  variant="light"/> Retrieving data from Spotify...</div>}
 
       </section>
   );

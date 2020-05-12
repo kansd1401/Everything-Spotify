@@ -54,6 +54,8 @@
   display: flex;
   color: #fefefe;
   margin-bottom: 0.5rem;
+  border-radius: 1rem;
+  min-width: 30rem;
   &__thumbnail {
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;

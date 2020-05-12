@@ -49,7 +49,7 @@ export default function ArtistsTab(props) {
               {data !== "" ? <ArtistList artists={data}/>:""}
             </div>
             </div>
-        : <div className="loading-tab"><Spinner animation="border"  variant="light"/></div>}
+        : <div className="loading-tab"><Spinner animation="border"  variant="light"/> Retrieving data from Spotify...</div>}
       </section>
   );
 }

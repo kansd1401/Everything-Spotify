@@ -47,7 +47,7 @@ export default function TracksTab(props) {
               {data !== "" ? <TrackList tracks={data}/>:""}
             </div>
           </div>
-        : <div className="loading-tab"><Spinner animation="border"  variant="light"/></div>}
+        : <div className="loading-tab"><Spinner animation="border"  variant="light"/> Retrieving data from Spotify...</div>}
       </section>
   );
 }
