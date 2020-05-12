@@ -30,7 +30,7 @@ window.location.hash = "";
 
 function App() {
   const token = hash.access_token
-  const [selected, setSelected] = useState(tabs[2])
+  const [selected, setSelected] = useState(tabs[0])
 
   return (
     <div className="App">
