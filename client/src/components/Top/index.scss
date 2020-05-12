@@ -67,15 +67,14 @@
     padding-left: 1rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
-    background: $orange;
+    // background: $orange;
     overflow: hidden;
   }
   &__info--explicit {
-    background: $orange;
+    // background: $orange;
   }
   &__artists {
     font-size: 1rem;
-    color: $grey
   }
   &__name {
     font-weight: 700;
