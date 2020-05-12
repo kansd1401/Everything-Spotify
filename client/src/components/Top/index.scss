@@ -37,8 +37,8 @@
 .list{
   display: flex;
   padding-top: 1rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
   flex-direction: column;
 }
 
@@ -50,13 +50,14 @@
 }
 
 .track {
-  max-height: 5%;
   display: flex;
   color: #fefefe;
   margin-bottom: 0.5rem;
   &__thumbnail {
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
+    min-width: 100px;
+    min-height: 100px;
   }
   &__info {
     display: flex;
@@ -70,7 +71,7 @@
     overflow: hidden;
   }
   &__info--explicit {
-    background: $yellow;
+    background: $orange;
   }
   &__artists {
     font-size: 1rem;
