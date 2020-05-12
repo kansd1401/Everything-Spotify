@@ -1,4 +1,5 @@
 @import '../variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Roboto&family=Yesteryear&display=swap');
 
 .App-header{
   background-color: $dark-blue;
@@ -13,10 +14,13 @@
   top: 0;
   display: flex;
   flex-direction: row;
-  background-color: $violet;
+  background-color: $purple;
   width: 100%;
   h1{
+    // font-family: 'Faster One', cursive;
+    font-family: 'Yesteryear', cursive;
     left: 0;
+    font-size: 4rem;
     width: fit-content;
     margin-right: 30rem;
     color: $blue;
@@ -167,10 +171,6 @@
 
     &--selected {
       color: $blue;
-
-      &:hover {
-        color: $white;
-      }
     }
     h3{
       font-weight: bold;
@@ -189,10 +189,11 @@
 
 .login{
   background-color: $violet;
-  padding: 0.8rem;
-  border-radius: 2rem;
+  padding: 1rem;
+  border-radius: 500px;
+  width: 16rem;
   a{
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: $blue;
   }
 }
