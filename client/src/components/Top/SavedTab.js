@@ -120,20 +120,19 @@ export default function SavedTab(props) {
 
   useEffect(() => {
     getPlaylists()
-    // console.log(playlist)
   }, [])
   
 
   return (
       <section className="top">
+        {playlists !== "" ? <Form.Group controlId="exampleForm.ControlSelect1">
+            <Form.Label>Select a Playlist</Form.Label>
+            <Form.Control as="select" onChange={handleChange}>
+        {playlists.map(list => <option key={list.name}>{list.name}</option>)}
+            </Form.Control>
+          </Form.Group>: ""}
         { !loading ?
         <div>
-          {playlists !== "" ? <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Label>Select a Playlist</Form.Label>
-              <Form.Control as="select" onChange={handleChange}>
-          {playlists.map(list => <option key={list.name}>{list.name}</option>)}
-              </Form.Control>
-            </Form.Group>: ""}
           <div className="age-list">
             {tabs.map((x,index) => {
               return <ListItem key={index} name={x.name} selected={selected} setAge={setSelected}/>})}
