@@ -19,7 +19,7 @@ export default function ArtistsTab(props) {
       url: `https://api.spotify.com/v1/me/top/artists`,
       type: "GET",
       data: { 
-        limit: 20, 
+        limit: 25, 
         time_range: ages.find(x => x.name===age).time_range
       },
       beforeSend: (xhr) => {
