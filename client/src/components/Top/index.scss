@@ -49,7 +49,9 @@
 
 .artist-list{
   display: flex;
-  margin: 10%;
+  padding-top: 1rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -77,13 +79,13 @@
     overflow: hidden;
   }
   &__artists {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
 
   }
   &__name {
     font-weight: bolder;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     margin-bottom: 0.5rem;
   }
   &__side{
@@ -137,9 +139,10 @@
 
 .age-list {
   display: flex;
-  width: 100%;
+  
   align-self: center;
-  // border-radius: 20px;
+  margin-left: 10rem;
+  margin-right: 10rem;
   background-color:$purple;
   &__item {
     flex-grow: 4; 
@@ -225,7 +228,7 @@
 
 .top{
   align-items: flex-start;
-  padding-top: 1%;
+  padding-top: 1rem;
   padding-left: 5%;
   padding-right: 5%;
   width: 100%;
