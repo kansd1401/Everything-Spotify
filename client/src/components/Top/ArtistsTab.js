@@ -38,7 +38,7 @@ export default function ArtistsTab(props) {
   
 
   return (
-      <section className="top">
+      <section className="top--tab">
          {!loading ?
           <div>
             <div className="age-list">

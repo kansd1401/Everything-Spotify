@@ -124,7 +124,7 @@ export default function SavedTab(props) {
   
 
   return (
-      <section className="top">
+      <section className="top--tab">
         {playlists !== "" ? <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label>Select a Playlist</Form.Label>
             <Form.Control as="select" onChange={handleChange}>

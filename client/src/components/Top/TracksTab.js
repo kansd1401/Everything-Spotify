@@ -36,7 +36,7 @@ export default function TracksTab(props) {
   
 
   return (
-      <section className="top">
+      <section className="top--tab">
         {!loading ?
           <div>
             <div className="age-list">
