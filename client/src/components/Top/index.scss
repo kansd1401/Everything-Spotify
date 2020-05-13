@@ -77,7 +77,6 @@
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     overflow: hidden;
-    max-height: 4rem;
   }
   &__artists {
     font-size: 1.3rem;
@@ -123,16 +122,14 @@
     border-bottom-right-radius: 0.5rem;
     background: $violet;
     overflow: hidden;
+    max-height: 6rem;
   }
   &__popularity {
     font-size: 1rem;
     color: $grey
   }
   &__name {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding: 1.5rem;
     font-weight: bolder;
     font-size: 2rem;
   }
