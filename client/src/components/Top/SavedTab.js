@@ -103,7 +103,6 @@ export default function SavedTab(props) {
   const handleChange = (event) => {
     setPlaylist(event.target.value);
   };
-  console.log(playlist)
   
   useEffect(() => {
     if (playlists){
