@@ -103,6 +103,7 @@ export default function SavedTab(props) {
   const handleChange = (event) => {
     setPlaylist(event.target.value);
   };
+  console.log(playlist)
   
   useEffect(() => {
     if (playlists){
@@ -134,7 +135,8 @@ export default function SavedTab(props) {
             {tabs.map((x,index) => {
               return <ListItem key={index} name={x.name} selected={selected} setAge={setSelected}/>})}
           </div>
-            {(selected === "Date Added" || selected === "Mean") && <p>Yooooooooo</p>}
+            {(selected === "Date Added" || selected === "Mean") && <p>{`${tabs.find( tab => tab.name === selected).description}${playlist}.`}</p>}
+            {(selected !== "Date Added" && selected !== "Mean") && <p>{tabs.find( tab => tab.name === selected).description}</p>}
           <div>
             {data !== "" && selected === "Date Added"? <Chart data={data.weekday} chartType="bar"/>:""}
             {data !== "" && selected === "Valence"? <Chart data={data.valence} chartType="doughnut"/>:""}
