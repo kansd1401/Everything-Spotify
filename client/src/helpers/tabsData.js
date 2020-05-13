@@ -1,0 +1,1 @@
+export const tabs = [{name: "Weekday", description: ""},{name: "Depressed", description: ""},{name: "Dance", description: ""},{name: "Energy", description: ""},{name: "Mean", description: ""},{name: "Standard Deviation", description: ""}]

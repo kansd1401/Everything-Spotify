@@ -4,10 +4,7 @@ import ListItem from './ListItem'
 import Chart from './Chart'
 import {Form, Spinner} from 'react-bootstrap'
 import {getDataSet} from "../../helpers/dataConversion"
-
-
-const tabs = [{name: "Weekday"},{name: "Depressed"},{name: "Dance"},{name: "Energy"},{name: "Mean"},{name: "Standard Deviation"}]
-
+import {tabs} from "../../helpers/tabsData"
 
 export default function SavedTab(props) {
   const [selected, setSelected] = useState(tabs[0].name)
