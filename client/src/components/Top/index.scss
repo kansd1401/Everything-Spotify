@@ -77,11 +77,14 @@
     overflow: hidden;
   }
   &__artists {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+
   }
   &__name {
-    font-weight: bold;
-    font-size: 2rem;
+    font-weight: bolder;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
   }
   &__side{
     padding: 1rem;
@@ -89,8 +92,8 @@
   &__rank {
     padding-top: 2rem;
     padding-bottom: 2rem;
-    font-weight: bold;
-    font-size: 2rem;
+    font-weight: bolder;
+    font-size: 1.7rem;
     vertical-align: middle;
   }
 }

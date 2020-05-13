@@ -15,7 +15,7 @@ export default function Track(props) {
             <img className="track__thumbnail" src={props.cover} alt="Track" />
             <div className="track__info">
               <div className="track__rank">
-                {props.rank}
+                {props.rank}.
               </div>
               <div className="track__side">
                 <div className="track__name">{props.name}</div>
