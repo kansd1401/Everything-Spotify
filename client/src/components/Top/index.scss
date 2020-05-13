@@ -59,7 +59,7 @@
   color: #fefefe;
   margin-bottom: 0.5rem;
   border-radius: 1rem;
-  min-width: 30rem;
+  min-width: 40rem;
   &__thumbnail {
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
@@ -69,7 +69,7 @@
   &__info {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
     padding: 1rem;
     border-top-right-radius: 0.5rem;
@@ -83,17 +83,18 @@
   }
   &__name {
     font-weight: bolder;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     margin-bottom: 0.5rem;
   }
   &__side{
     padding: 1rem;
+    text-align: right;
   }
   &__rank {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    // padding-top: 2rem;
+    // padding-bottom: 2rem;
     font-weight: bolder;
-    font-size: 1.7rem;
+    font-size: 4.8rem;
     vertical-align: middle;
   }
 }
