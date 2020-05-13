@@ -134,10 +134,11 @@ export default function SavedTab(props) {
             {tabs.map((x,index) => {
               return <ListItem key={index} name={x.name} selected={selected} setAge={setSelected}/>})}
           </div>
+            {(selected === "Date Added" || selected === "Mean") && <p>Yooooooooo</p>}
           <div>
-            {data !== "" && selected === "Weekday"? <Chart data={data.weekday} chartType="bar"/>:""}
-            {data !== "" && selected === "Depressed"? <Chart data={data.valence} chartType="doughnut"/>:""}
-            {data !== "" && selected === "Dance"? <Chart data={data.danceability} chartType="doughnut"/>:""}
+            {data !== "" && selected === "Date Added"? <Chart data={data.weekday} chartType="bar"/>:""}
+            {data !== "" && selected === "Valence"? <Chart data={data.valence} chartType="doughnut"/>:""}
+            {data !== "" && selected === "Danceability"? <Chart data={data.danceability} chartType="doughnut"/>:""}
             {data !== "" && selected === "Energy"?
             <Chart data={data.energy} chartType="doughnut"/>:""}
             {data !== "" && selected === "Mean"?
