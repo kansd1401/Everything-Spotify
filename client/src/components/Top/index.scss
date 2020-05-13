@@ -68,26 +68,29 @@
   }
   &__info {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     width: 100%;
-    padding-left: 1rem;
+    padding: 1rem;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
-    // background: $orange;
     overflow: hidden;
-  }
-  &__info--explicit {
-    // background: $orange;
   }
   &__artists {
     font-size: 1rem;
   }
   &__name {
-    font-weight: 700;
-    font-size: 1.4rem;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+  &__side{
+    padding: 1rem;
   }
   &__rank {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-weight: bold;
+    font-size: 2rem;
     vertical-align: middle;
   }
 }
