@@ -137,15 +137,15 @@ export default function SavedTab(props) {
             {(selected === "Date Added" || selected === "Mean") && <p>{`${tabs.find( tab => tab.name === selected).description}${playlist}.`}</p>}
             {(selected !== "Date Added" && selected !== "Mean") && <p>{tabs.find( tab => tab.name === selected).description}</p>}
           <div>
-            {data !== "" && selected === "Date Added"? <Chart data={data.weekday} chartType="bar"/>:""}
+            {data !== "" && selected === "Date Added"? <Chart data={data.weekday} label={"Number Songs added to the playlist on each weekday"} chartType="bar"/>:""}
             {data !== "" && selected === "Valence"? <Chart data={data.valence} chartType="doughnut"/>:""}
             {data !== "" && selected === "Danceability"? <Chart data={data.danceability} chartType="doughnut"/>:""}
             {data !== "" && selected === "Energy"?
             <Chart data={data.energy} chartType="doughnut"/>:""}
             {data !== "" && selected === "Mean"?
-            <Chart data={data.mean} chartType="bar"/>:""}
+            <Chart data={data.mean} label={"Average of each audio-feature"} chartType="bar"/>:""}
             {data !== "" && selected === "Standard Deviation"?
-            <Chart data={data.std} chartType="bar"/>:""}      
+            <Chart data={data.std} label={"Standard Deviation of each audio-feature"} chartType="bar"/>:""}      
           </div>
         </div>
         : <div className="loading-tab"><Spinner animation="border"  variant="light"/> Retrieving data from Spotify...</div>}

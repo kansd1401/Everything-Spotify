@@ -10,7 +10,7 @@ export default function Chart(props) {
       {props.chartType === "bar" && <Bar data={{
         labels: props.data.map((x) => x.day),
         datasets: [{
-        label: "Percentage of Saved Tracks",
+        label: props.label,
         backgroundColor: [
             'rgba(255, 99, 132)',
             'rgba(54, 162, 235)',

@@ -5,7 +5,7 @@ const getDataForWeekday = (tracks) => {
     dataWeekday[d.getDay()].count++
   })
   dataWeekday.forEach((day) => {
-    day.percentage = (day.count/tracks.length)*100
+    day.percentage = day.count
   })
   return dataWeekday
 }
