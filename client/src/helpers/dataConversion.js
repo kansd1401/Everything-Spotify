@@ -24,29 +24,28 @@ const getDataForValence = (tracks) => {
   data.forEach((day) => {
     day.percentage = (day.count/tracks.length)*100
   })
-  console.log(data)
   return data
 }
 
 const getDataForEnergy = (tracks) => {
-  const data = [{day: "Low", count: 0, percentage:0, highest: tracks.sort( (a,b) => b.track.energy -a.track.energy)[0].track, lowest: tracks.sort( (a,b) => a.track.energy - b.track.energy)[0].track},{day: "OK", count: 0, percentage:0},{day: "High", count: 0, percentage:0}]
+  const data = [{day: "Chill music: Values < 0.5", count: 0, percentage:0, highest: tracks.sort( (a,b) => b.track.energy -a.track.energy)[0].track, lowest: tracks.sort( (a,b) => a.track.energy - b.track.energy)[0].track},{day: "Average music", count: 0, percentage:0},{day: "Hype music: Values > 0.75", count: 0, percentage:0}]
   tracks.forEach((x) => {
-    if(x.track.energy < 0.33){
+    if(x.track.energy < 0.5){
       data[0].count++
-    }else if(x.track.energy > 0.66){
+    }else if(x.track.energy > 0.75){
       data[2].count++
     }else{
       data[1].count++
     }
   })
   data.forEach((day) => {
-    day.percentage = (day.count/tracks.length)*100
+    day.percentage = day.count
   })
   return data
 }
 
 const getDataForDanceability = (tracks) => {
-  const data = [{day: "Least Danceable songs", count: 0, percentage:0, highest: tracks.sort( (a,b) => b.track.danceability -a.track.danceability)[0].track, lowest: tracks.sort( (a,b) => a.track.danceability - b.track.danceability)[0].track},{day: "Do what you want", count: 0, percentage:0},{day: "Most Danceable songs", count: 0, percentage:0}]
+  const data = [{day: "Least Danceable songs", count: 0, percentage:0, highest: tracks.sort( (a,b) => b.track.danceability -a.track.danceability)[0].track, lowest: tracks.sort( (a,b) => a.track.danceability - b.track.danceability)[0].track},{day: "Average songs", count: 0, percentage:0},{day: "Most Danceable songs", count: 0, percentage:0}]
   tracks.forEach((x) => {
     if(x.track.danceability < 0.60){
       data[0].count++
