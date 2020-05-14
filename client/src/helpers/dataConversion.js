@@ -11,18 +11,18 @@ const getDataForWeekday = (tracks) => {
 }
 
 const getDataForValence = (tracks) => {
-  const data = [{day: "Sad", count: 0, percentage:0, highest: tracks.sort( (a,b) => b.track.valence -a.track.valence)[0].track, lowest: tracks.sort( (a,b) => a.track.valence - b.track.valence)[0].track},{day: "OK", count: 0, percentage:0},{day: "Happy", count: 0, percentage:0}]
+  const data = [{day: "Sad music: Values < 0.36", count: 0, percentage:0, highest: tracks.sort( (a,b) => b.track.valence -a.track.valence)[0].track, lowest: tracks.sort( (a,b) => a.track.valence - b.track.valence)[0].track},{day: "Average music", count: 0, percentage:0},{day: "Happy music: Values > 0.63", count: 0, percentage:0}]
   tracks.forEach((x) => {
-    if(x.track.valence < 0.33){
+    if(x.track.valence < 0.36){
       data[0].count++
-    }else if(x.track.valence > 0.66){
+    }else if(x.track.valence > 0.63){
       data[2].count++
     }else{
       data[1].count++
     }
   })
   data.forEach((day) => {
-    day.percentage = (day.count/tracks.length)*100
+    day.percentage = day.count
   })
   return data
 }
@@ -47,9 +47,9 @@ const getDataForEnergy = (tracks) => {
 const getDataForDanceability = (tracks) => {
   const data = [{day: "Least Danceable songs", count: 0, percentage:0, highest: tracks.sort( (a,b) => b.track.danceability -a.track.danceability)[0].track, lowest: tracks.sort( (a,b) => a.track.danceability - b.track.danceability)[0].track},{day: "Average songs", count: 0, percentage:0},{day: "Most Danceable songs", count: 0, percentage:0}]
   tracks.forEach((x) => {
-    if(x.track.danceability < 0.60){
+    if(x.track.danceability < 0.55){
       data[0].count++
-    }else if(x.track.danceability > 0.80){
+    }else if(x.track.danceability > 0.7){
       data[2].count++
     }else{
       data[1].count++
