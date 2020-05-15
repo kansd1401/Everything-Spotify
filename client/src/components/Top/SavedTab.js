@@ -121,7 +121,7 @@ export default function SavedTab(props) {
   
 
   return (
-      <section className="top--tab">
+      <section className="top--saved">
         {playlists !== "" ? <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label>Select a Playlist</Form.Label>
             <Form.Control as="select" onChange={handleChange}>
@@ -129,7 +129,7 @@ export default function SavedTab(props) {
             </Form.Control>
           </Form.Group>: ""}
         { !loading ?
-        <div classname="">
+        <div classname="top--saved__tabs">
           <div className="age-list">
             {tabs.map((x,index) => {
               return <ListItem key={index} name={x.name} selected={selected} setAge={setSelected}/>})}
