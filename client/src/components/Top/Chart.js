@@ -53,22 +53,20 @@ export default function Chart(props) {
         data: props.data.map((x) => x.percentage),
         }]
     }}/>}
+    <div className="">
       {highest ? <Track 
        key={0}
-       rank={1}
-       cover={highest.album.images[2].url}
+       cover={highest.album.images[1].url}
        artists={highest.artists}
        name={highest.name}
-       explicit={highest.explicit}
       />: ""}
       {lowest ? <Track 
        key={2}
-       rank={2}
-       cover={lowest.album.images[2].url}
+       cover={lowest.album.images[1].url}
        artists={lowest.artists}
        name={lowest.name}
-       explicit={lowest.explicit}
       />: ""}
+    </div>
       
     </div>
   );

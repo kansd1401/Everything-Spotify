@@ -14,9 +14,9 @@ export default function Track(props) {
           <article className="track" style={{ background: data[1], color: data[0] }}>
             <img className="track__thumbnail" src={props.cover} alt="Track" />
             <div className="track__info">
-              <div className="track__rank">
+              {props.rank && <div className="track__rank">
                 {props.rank}
-              </div>
+              </div>}
               <div className="track__side">
                 <div className="track__name">{props.name}</div>
                 <div className="track__artists">{artists}</div>

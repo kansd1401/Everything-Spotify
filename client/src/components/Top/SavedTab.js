@@ -134,8 +134,8 @@ export default function SavedTab(props) {
             {tabs.map((x,index) => {
               return <ListItem key={index} name={x.name} selected={selected} setAge={setSelected}/>})}
           </div>
-            {(selected === "Date Added" || selected === "Mean") && <p>{`${tabs.find( tab => tab.name === selected).description}${playlist}.`}</p>}
-            {(selected !== "Date Added" && selected !== "Mean") && <p>{tabs.find( tab => tab.name === selected).description}</p>}
+            {(selected === "Date Added" || selected === "Mean") && <p className="description">{`${tabs.find( tab => tab.name === selected).description}${playlist}.`}</p>}
+            {(selected !== "Date Added" && selected !== "Mean") && <p className="description">{tabs.find( tab => tab.name === selected).description}</p>}
           <div>
             {data !== "" && selected === "Date Added"? <Chart data={data.weekday} label={"Number Songs added to the playlist on each weekday"} chartType="bar"/>:""}
             {data !== "" && selected === "Valence"? <Chart data={data.valence} chartType="doughnut"/>:""}
