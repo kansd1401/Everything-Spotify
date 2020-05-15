@@ -129,7 +129,7 @@ export default function SavedTab(props) {
             </Form.Control>
           </Form.Group>: ""}
         { !loading ?
-        <div>
+        <div classname="">
           <div className="age-list">
             {tabs.map((x,index) => {
               return <ListItem key={index} name={x.name} selected={selected} setAge={setSelected}/>})}
@@ -138,10 +138,10 @@ export default function SavedTab(props) {
             {(selected !== "Date Added" && selected !== "Mean") && <p className="description">{tabs.find( tab => tab.name === selected).description}</p>}
           <div>
             {data !== "" && selected === "Date Added"? <Chart data={data.weekday} label={"Number Songs added to the playlist on each weekday"} chartType="bar"/>:""}
-            {data !== "" && selected === "Valence"? <Chart data={data.valence} chartType="doughnut"/>:""}
-            {data !== "" && selected === "Danceability"? <Chart data={data.danceability} chartType="doughnut"/>:""}
+            {data !== "" && selected === "Valence"? <Chart data={data.valence} chartType="doughnut" type={"Valence"}/>:""}
+            {data !== "" && selected === "Danceability"? <Chart data={data.danceability} type={"Danceability"} chartType="doughnut"/>:""}
             {data !== "" && selected === "Energy"?
-            <Chart data={data.energy} chartType="doughnut"/>:""}
+            <Chart data={data.energy} chartType="doughnut" type={"Energy"}/>:""}
             {data !== "" && selected === "Mean"?
             <Chart data={data.mean} label={"Average of each audio-feature"} chartType="bar"/>:""}
             {data !== "" && selected === "Standard Deviation"?

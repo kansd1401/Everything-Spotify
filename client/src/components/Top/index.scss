@@ -219,6 +219,9 @@
 .chart{
   height: 50%;
   widows: 80%;
+  display: flex;
+  flex-wrap: wrap ;
+  flex-direction: column;
 }
 
 .login{
@@ -248,4 +251,14 @@
 .loading-tab{
   min-height: 1000px  ;
   width: 100%;
+}
+
+.extremes{
+
+  &__highest{
+
+  }
+  &__lowest{
+    
+  }
 }
