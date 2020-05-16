@@ -3,6 +3,7 @@
 
 .App{
   font-family: 'Roboto', sans-serif;
+  min-width: 75rem;
 
 }
 .App-header{
@@ -19,7 +20,7 @@
   padding-bottom: 1rem;
   top: 0;
   flex-wrap: wrap ;
-  justify-content: space-between;
+  justify-content: space-evenly;
   display: flex;
   flex-direction: row;
   background-color: $purple;
@@ -91,8 +92,6 @@
     text-align: right;
   }
   &__rank {
-    // padding-top: 2rem;
-    // padding-bottom: 2rem;
     font-weight: bolder;
     font-size: 4.8rem;
     vertical-align: middle;
@@ -240,12 +239,11 @@
   width: 100%;
   &--saved{
     padding: 3rem;
-
   }
   &--tab{
     min-width: 55rem;
-    padding-left: 10rem;
-    padding-right: 10rem;
+    padding-left: 13rem;
+    padding-right: 13rem;
   }
 }
 
