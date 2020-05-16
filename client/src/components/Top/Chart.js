@@ -7,7 +7,12 @@ export default function Chart(props) {
   const lowest = props.data[0].lowest
   return (
     <div className="chart">
-      {props.chartType === "bar" && <Bar options={ {legend: {labels: {fontColor: 'white'}}}} data={{
+      {props.chartType === "bar" && <Bar options={ {
+        legend: {labels: {fontColor: 'white',fontSize: 20,}},
+        scales: {
+          yAxes: [{ticks: {fontSize: 22, fontColor: 'white'}}],
+          xAxes: [{ticks: {fontSize: 17, fontColor: 'white'}}]
+        }}} data={{
         labels: props.data.map((x) => x.day),
         datasets: [{
         label: props.label,
@@ -17,7 +22,8 @@ export default function Chart(props) {
             'rgba(255, 206, 86)',
             'rgba(75, 192, 192)',
             'rgba(153, 102, 255)',
-            'rgba(255, 159, 64)'
+            'rgba(255, 159, 64)',
+            '#dddddd'
         ],
         borderColor: [
           'rgba(255, 99, 132)',
@@ -25,12 +31,13 @@ export default function Chart(props) {
           'rgba(255, 206, 86)',
           'rgba(75, 192, 192)',
           'rgba(153, 102, 255)',
-          'rgba(255, 159, 64)'
+          'rgba(255, 159, 64)',
+          '#dddddd'
         ],
         data: props.data.map(x => x.percentage),
         }]
     }}/>}
-    {props.chartType === "doughnut" && <Doughnut options={ {legend: {labels: {fontColor: 'white'}}}} data={{
+    {props.chartType === "doughnut" && <Doughnut options={ {legend: {labels: {fontColor: 'white',fontSize: 22}}}} data={{
         labels: props.data.map((x) => x.day),
         datasets: [{
         label: "Percentage of Saved Tracks",
