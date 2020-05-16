@@ -8,10 +8,10 @@ export default function Chart(props) {
   return (
     <div className="chart">
       {props.chartType === "bar" && <Bar options={ {
-        legend: {labels: {fontColor: 'white',fontSize: 20,}},
+        legend: {labels: {fontColor: '#dddddd',fontSize: 20,}},
         scales: {
-          yAxes: [{ticks: {fontSize: 22, fontColor: 'white'}}],
-          xAxes: [{ticks: {fontSize: 17, fontColor: 'white'}}]
+          yAxes: [{ticks: {fontSize: 22, fontColor: '#dddddd'}}],
+          xAxes: [{ticks: {fontSize: 17, fontColor: '#dddddd'}}]
         }}} data={{
         labels: props.data.map((x) => x.day),
         datasets: [{
@@ -37,7 +37,7 @@ export default function Chart(props) {
         data: props.data.map(x => x.percentage),
         }]
     }}/>}
-    {props.chartType === "doughnut" && <Doughnut options={ {legend: {labels: {fontColor: 'white',fontSize: 22}}}} data={{
+    {props.chartType === "doughnut" && <Doughnut options={ {legend: {labels: {fontColor: '#dddddd',fontSize: 22}}}} data={{
         labels: props.data.map((x) => x.day),
         datasets: [{
         label: "Percentage of Saved Tracks",

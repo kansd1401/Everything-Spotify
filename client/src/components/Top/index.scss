@@ -39,6 +39,24 @@
   }
 }
 
+.footer{
+  background-color: $purple;
+  display: flex;
+  justify-content: space-around;
+  height: 6rem;
+  padding: 2rem;
+  a{
+    font-family: 'Orbitron', sans-serif;
+    // font-family: 'Yesteryear', cursive;
+    left: 0;
+    font-size: 2rem;
+    font-weight: bolder;
+    width: fit-content;
+    color: $grey;
+      
+  }
+}
+
 .list{
   display: flex;
   padding-top: 1rem;
@@ -49,8 +67,6 @@
 .artist-list{
   display: flex;
   padding-top: 0.5rem;
-  padding-left: 10rem;
-  padding-right: 10rem;
   flex-wrap: wrap;
   justify-content: center;
 }
