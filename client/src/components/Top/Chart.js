@@ -7,7 +7,7 @@ export default function Chart(props) {
   const lowest = props.data[0].lowest
   return (
     <div className="chart">
-      {props.chartType === "bar" && <Bar data={{
+      {props.chartType === "bar" && <Bar options={ {legend: {labels: {fontColor: 'white'}}}} data={{
         labels: props.data.map((x) => x.day),
         datasets: [{
         label: props.label,
@@ -30,7 +30,7 @@ export default function Chart(props) {
         data: props.data.map(x => x.percentage),
         }]
     }}/>}
-    {props.chartType === "doughnut" && <Doughnut data={{
+    {props.chartType === "doughnut" && <Doughnut options={ {legend: {labels: {fontColor: 'white'}}}} data={{
         labels: props.data.map((x) => x.day),
         datasets: [{
         label: "Percentage of Saved Tracks",
