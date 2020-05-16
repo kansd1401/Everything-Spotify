@@ -51,32 +51,33 @@ export default function Chart(props) {
           'rgba(255, 159, 64)'
         ],
         data: props.data.map((x) => x.percentage),
+        labelColors: "black"
         }]
-    }}/>}
-    { props.highest !== null && <div className="extremes">
-      <div>
-        <h1>Song with the highest {props.type}</h1>
-        <div className="extremes__highest">
-          <Track 
-          key={0}
-          cover={highest.album.images[1].url}
-          artists={highest.artists}
-          name={highest.name}
-          />
+      }}/>}
+      { props.chartType === "doughnut" && <div className="extremes">
+        <div>
+          <h1>Song with the highest {props.type}</h1>
+          <div className="extremes__highest">
+            <Track 
+            key={0}
+            cover={highest.album.images[1].url}
+            artists={highest.artists}
+            name={highest.name}
+            />
+          </div>
         </div>
-      </div>
-      <div>
-        <h1>Song with the lowest {props.type}</h1>
-        <div className="extremes__lowest">
-          <Track 
-          key={2}
-          cover={lowest.album.images[1].url}
-          artists={lowest.artists}
-          name={lowest.name}
-          />
+        <div>
+          <h1>Song with the lowest {props.type}</h1>
+          <div className="extremes__lowest">
+            <Track 
+            key={2}
+            cover={lowest.album.images[1].url}
+            artists={lowest.artists}
+            name={lowest.name}
+            />
+          </div>
         </div>
-      </div>
-    </div>}
+      </div>}
     </div>
   );
 }
