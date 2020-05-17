@@ -12,7 +12,7 @@ export default function Top({selected, token}) {
       <section className="top">
         {selected==="Top Tracks" && <TracksTab token={token}/>}
         {selected==="Top Artists" && <ArtistsTab token={token}/>}
-        {selected==="Genre Statistics" && <SavedTab token={token}/>}
+        {selected==="Statistics" && <SavedTab token={token}/>}
       </section>
   );
 }
