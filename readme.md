@@ -1,10 +1,9 @@
-#user stories
+# Everything-Spotify
 
-user can view their top artist and compare their popularity by long all time, 6 months and 1 month
-user can view top genre songs they like by long all time, 6 months and 1 month
-user top genres by month
+SpeedWeather is a simple web app that shows the current weather data of some cities in BC superimposed on its map. 
 
-word cloud of top tacks
-user can see shows and artist info
-user can organize all the songs in the playlist
-user clean duplicates from all playlists
+
+## Final Product
+
+!["Screenshot of the page"](https://github.com/kansd1401/SpeedWeather/blob/master/screenshots/02.png)
+!["Screenshot of on clicking for more details"](https://github.com/kansd1401/SpeedWeather/blob/master/screenshots/01.png)
