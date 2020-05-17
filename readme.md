@@ -1,6 +1,8 @@
 # Everything-Spotify
 
-Everything-Spotify is a simple web app that shows the current weather data of some cities in BC superimposed on its map. 
+Everything-Spotify uses Spotify-api go give an in-depth analysis on songs you listen to and shows your top tracks and artists for different periods of time.
+
+[Live demo](https://everything-spotify.herokuapp.com/)
 
 
 ## Final Product
