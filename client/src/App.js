@@ -1,4 +1,4 @@
-import React,{ useState} from 'react';
+import React,{ useState, useEffect} from 'react';
 import './App.css';
 import TopList from './components/Top'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,7 +6,7 @@ import HeaderList from './components/Top/HearderList'
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "8beaa14c429347dc96de7ca4c2434e11";
-const redirectUri = "https://everything-spotify.herokuapp.com/";
+const redirectUri = "http://localhost:3000/";
 const scopes = [
   "user-read-currently-playing",
   "user-read-playback-state",
@@ -16,7 +16,7 @@ const scopes = [
 const tabs = ["Top Tracks","Top Artists","Statistics"]
 
 // Get the hash of the url
-const hash = window.location.hash
+let hash = window.location.hash
   .substring(1)
   .split("&")
   .reduce(function(initial, item) {
@@ -29,8 +29,15 @@ const hash = window.location.hash
 window.location.hash = "";
 
 function App() {
-  const token = hash.access_token
+  let expiry = Number(hash.expires_in)*1000
+  const [token, setToken] = useState(hash.access_token)
   const [selected, setSelected] = useState(tabs[0])
+  useEffect( () => {
+    setTimeout(function(){ 
+      hash = "";
+      setToken(undefined)}, expiry);
+  },[])
+
 
   return (
     <div className="App">
