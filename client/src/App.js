@@ -13,7 +13,7 @@ const scopes = [
   "user-top-read",
   "user-library-read"
 ];
-const tabs = ["Top Tracks","Top Artists","Genre Statistics"]
+const tabs = ["Top Tracks","Top Artists","Statistics"]
 
 // Get the hash of the url
 const hash = window.location.hash
