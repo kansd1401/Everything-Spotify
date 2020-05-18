@@ -53,7 +53,7 @@
     font-weight: bolder;
     width: fit-content;
     color: $grey;
-      
+       
   }
 }
 
@@ -248,18 +248,31 @@
 }
 
 .top{
-  align-items: flex-start;
+  // align-items: flex-start;
   padding-top: 1rem;
   padding-left: 5%;
   padding-right: 5%;
   width: 100%;
+ 
   &--saved{
-    padding: 3rem;
+    min-width: 65rem;
+    max-width: 85rem;
+    width: 60%;
+    margin: 0 auto;
   }
   &--tab{
     min-width: 55rem;
-    padding-left: 13rem;
-    padding-right: 13rem;
+    max-width: 75rem;
+    width: 50%;
+    margin: 0 auto;
+    // padding-left: 13rem;
+    // padding-right: 13rem;
+  }
+  &--artists{
+    min-width: 55rem;
+    max-width: 90rem;
+    width: 70%;
+    margin: 0 auto;
   }
 }
 

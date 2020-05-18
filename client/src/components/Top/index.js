@@ -2,10 +2,8 @@ import React from 'react';
 import TracksTab from './TracksTab'
 import ArtistsTab from './ArtistsTab'
 import SavedTab from './SavedTab'
-import "./index.scss" //Todo: Separate the sass and refactor
-
-
-
+import "./index.scss"
+  
 export default function Top({selected, token}) {
 
   return (
